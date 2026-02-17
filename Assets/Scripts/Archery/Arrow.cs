@@ -15,6 +15,10 @@ class Arrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Target"))
+        {
+            ArcheryGameController.Instance.AddScore(1); // Award points for hitting a target
+        }
         // Handle collision logic here (e.g., damage, destroy arrow, etc.)
         Destroy(gameObject);
     }
