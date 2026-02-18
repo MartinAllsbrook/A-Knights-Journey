@@ -17,9 +17,11 @@ class Arrow : MonoBehaviour
     {
         if (collision.CompareTag("Target"))
         {
+            ArcheryGameController.Instance.TallyHit();
             ArcheryGameController.Instance.AddScore(1); // Award points for hitting a target
         }
         // Handle collision logic here (e.g., damage, destroy arrow, etc.)
+        ArcheryGameController.Instance.TallyShot();
         Destroy(gameObject);
     }
 }

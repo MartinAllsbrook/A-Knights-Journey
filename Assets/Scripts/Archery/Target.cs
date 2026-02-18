@@ -9,6 +9,8 @@ public class Target : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        ArcheryGameController.Instance.TallyTarget();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
