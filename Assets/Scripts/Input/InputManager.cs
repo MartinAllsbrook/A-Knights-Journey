@@ -16,6 +16,9 @@ class InputManager : MonoBehaviour
     public static event Action Swordplay_AttackLeft = delegate {};
     public static event Action Swordplay_AttackRight = delegate {};
 
+    // Riding
+    public static event Action<Vector2> Riding_OnMove = delegate {};
+
     void Awake()
     {
         if (Instance == null)
@@ -45,14 +48,24 @@ class InputManager : MonoBehaviour
 
     void LinkEvents()
     {
+        // Archery
         controls.Archery.Move.performed += ctx => Archery_OnMove.Invoke(ctx.ReadValue<float>());
         controls.Archery.Move.canceled += ctx => Archery_OnMove.Invoke(0f);
 
         controls.Archery.Fire.performed += ctx => Archery_OnFire.Invoke();
 
+        // Swordplay
         controls.Swordplay.AttackUp.performed += ctx => Swordplay_AttackUp.Invoke();
+
         controls.Swordplay.AttackDown.performed += ctx => Swordplay_AttackDown.Invoke();
+
         controls.Swordplay.AttackLeft.performed += ctx => Swordplay_AttackLeft.Invoke();
+
         controls.Swordplay.AttackRight.performed += ctx => Swordplay_AttackRight.Invoke();
+
+
+        // Riding
+        controls.Riding.Move.performed += ctx => Riding_OnMove.Invoke(ctx.ReadValue<Vector2>());
+        controls.Riding.Move.canceled += ctx => Riding_OnMove.Invoke(Vector2.zero);
     }
 }

@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Target
   - Sword
-  - Tree
+  - Obstacle
   layers:
   - Default
   - TransparentFX

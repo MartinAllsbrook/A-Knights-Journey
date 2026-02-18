@@ -267,6 +267,78 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Riding"",
+            ""id"": ""e2d531c1-9a66-484a-a18e-eb1d943fb7da"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""c7bbac14-fef5-4323-aa25-cc5c82f51697"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""e5802bd5-1f02-4280-be4e-36db77741ea3"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""19bc98e1-ea9a-4ae3-a61d-15a841384492"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0bd67f39-b7d2-4758-a728-8e28708baa1b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b28fcbf2-4ee4-4e6c-a3c5-2fc3a7568ceb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e7bd1ce0-d5e8-4ad7-a27a-6dafc71e6ba1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -281,12 +353,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Swordplay_AttackDown = m_Swordplay.FindAction("AttackDown", throwIfNotFound: true);
         m_Swordplay_AttackLeft = m_Swordplay.FindAction("AttackLeft", throwIfNotFound: true);
         m_Swordplay_AttackRight = m_Swordplay.FindAction("AttackRight", throwIfNotFound: true);
+        // Riding
+        m_Riding = asset.FindActionMap("Riding", throwIfNotFound: true);
+        m_Riding_Move = m_Riding.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@InputActions()
     {
         UnityEngine.Debug.Assert(!m_Archery.enabled, "This will cause a leak and performance issues, InputActions.Archery.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Swordplay.enabled, "This will cause a leak and performance issues, InputActions.Swordplay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Riding.enabled, "This will cause a leak and performance issues, InputActions.Riding.Disable() has not been called.");
     }
 
     /// <summary>
@@ -594,6 +670,102 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="SwordplayActions" /> instance referencing this action map.
     /// </summary>
     public SwordplayActions @Swordplay => new SwordplayActions(this);
+
+    // Riding
+    private readonly InputActionMap m_Riding;
+    private List<IRidingActions> m_RidingActionsCallbackInterfaces = new List<IRidingActions>();
+    private readonly InputAction m_Riding_Move;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Riding".
+    /// </summary>
+    public struct RidingActions
+    {
+        private @InputActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RidingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Riding/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Riding_Move;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Riding; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RidingActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RidingActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RidingActions" />
+        public void AddCallbacks(IRidingActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RidingActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RidingActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RidingActions" />
+        private void UnregisterCallbacks(IRidingActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RidingActions.UnregisterCallbacks(IRidingActions)" />.
+        /// </summary>
+        /// <seealso cref="RidingActions.UnregisterCallbacks(IRidingActions)" />
+        public void RemoveCallbacks(IRidingActions instance)
+        {
+            if (m_Wrapper.m_RidingActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RidingActions.AddCallbacks(IRidingActions)" />
+        /// <seealso cref="RidingActions.RemoveCallbacks(IRidingActions)" />
+        /// <seealso cref="RidingActions.UnregisterCallbacks(IRidingActions)" />
+        public void SetCallbacks(IRidingActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RidingActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RidingActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RidingActions" /> instance referencing this action map.
+    /// </summary>
+    public RidingActions @Riding => new RidingActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Archery" which allows adding and removing callbacks.
     /// </summary>
@@ -651,5 +823,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttackRight(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Riding" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RidingActions.AddCallbacks(IRidingActions)" />
+    /// <seealso cref="RidingActions.RemoveCallbacks(IRidingActions)" />
+    public interface IRidingActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }
