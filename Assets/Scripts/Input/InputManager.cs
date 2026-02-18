@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 using UnityEngine;
 
 class InputManager : MonoBehaviour
@@ -10,6 +9,12 @@ class InputManager : MonoBehaviour
     // Archery
     public static event Action<float> Archery_OnMove = delegate {};
     public static event Action Archery_OnFire = delegate {};
+
+    // Swordplay
+    public static event Action Swordplay_AttackUp = delegate {};
+    public static event Action Swordplay_AttackDown = delegate {};
+    public static event Action Swordplay_AttackLeft = delegate {};
+    public static event Action Swordplay_AttackRight = delegate {};
 
     void Awake()
     {
@@ -44,5 +49,10 @@ class InputManager : MonoBehaviour
         controls.Archery.Move.canceled += ctx => Archery_OnMove.Invoke(0f);
 
         controls.Archery.Fire.performed += ctx => Archery_OnFire.Invoke();
+
+        controls.Swordplay.AttackUp.performed += ctx => Swordplay_AttackUp.Invoke();
+        controls.Swordplay.AttackDown.performed += ctx => Swordplay_AttackDown.Invoke();
+        controls.Swordplay.AttackLeft.performed += ctx => Swordplay_AttackLeft.Invoke();
+        controls.Swordplay.AttackRight.performed += ctx => Swordplay_AttackRight.Invoke();
     }
 }
