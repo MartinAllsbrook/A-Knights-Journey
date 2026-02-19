@@ -311,6 +311,65 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &556866907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 556866909}
+  - component: {fileID: 556866908}
+  m_Layer: 0
+  m_Name: ChunksParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!50 &556866908
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556866907}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
+--- !u!4 &556866909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556866907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781979109
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RidingGame
   gameOverScreen: {fileID: 1497291562}
+  chunksParent: {fileID: 556866908}
   chunkPrefabs:
   - {fileID: 451645292234427816, guid: 4c55b5c44f1f6024696e10ad778f0ad1, type: 3}
   - {fileID: 451645292234427816, guid: 5bc45c50bb74c9247b21e3a559af8d66, type: 3}
@@ -348,6 +408,8 @@ MonoBehaviour:
   - {fileID: 451645292234427816, guid: d6766410e233ce34bb25ad4ad1ba227e, type: 3}
   chunkSize: 50
   loadedDistance: 3
+  moveSpeed: 5
+  moveSpeedIncreaseRate: 0.05
 --- !u!4 &781979111
 Transform:
   m_ObjectHideFlags: 0
@@ -392,8 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79053bca3a008af4e98575bf145a886d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RidingPlayer
-  moveSpeed: 5
-  moveSpeedIncreaseRate: 0.1
 --- !u!4 &958545736
 Transform:
   m_ObjectHideFlags: 0
@@ -1211,3 +1271,4 @@ SceneRoots:
   - {fileID: 43254302}
   - {fileID: 1497291566}
   - {fileID: 1739682005}
+  - {fileID: 556866909}
