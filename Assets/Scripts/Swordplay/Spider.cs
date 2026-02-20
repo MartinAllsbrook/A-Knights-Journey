@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Spider : MonoBehaviour
 {
-    [Header("Spider Settings")]
-    [SerializeField] float moveSpeed = 2f;
+    float moveSpeed = 2f;
 
     Vector3 startPosition;
 
@@ -16,6 +15,11 @@ public class Spider : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

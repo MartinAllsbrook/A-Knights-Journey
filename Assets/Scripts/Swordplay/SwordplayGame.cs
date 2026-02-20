@@ -8,13 +8,17 @@ class SwordplayGame : MonoBehaviour
     [Header("Game Settings")]
     [SerializeField] int startingLives = 3;
     [SerializeField] float spawnInterval = 2f;
+    [SerializeField] float spawnIntervalDecreaseRate = 0.05f;
+    [SerializeField] float minSpawnInterval = 0.2f;
+    [SerializeField] float enemySpeed = 2f;
+    [SerializeField] float enemySpeedIncreaseRate = 0.1f;
 
     [Header("References")]
     [SerializeField] SwordplayHUD hud;
     [SerializeField] Transform[] spiderSpawnPoints;
 
     [Header("Prefabs")]
-    [SerializeField] GameObject spiderPrefab;
+    [SerializeField] Spider spiderPrefab;
 
     int currentLives;
     int currentScore;
@@ -22,14 +26,9 @@ class SwordplayGame : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Start()
@@ -42,12 +41,20 @@ class SwordplayGame : MonoBehaviour
         StartCoroutine(SpawnSpiders());
     }
 
+    void Update()
+    {
+        spawnInterval = Mathf.Max(minSpawnInterval, spawnInterval - spawnIntervalDecreaseRate * Time.deltaTime);
+        
+        enemySpeed += enemySpeedIncreaseRate * Time.deltaTime;
+    }
+
     IEnumerator SpawnSpiders()
     {
         while (currentLives > 0)
         {
             int spawnIndex = Random.Range(0, spiderSpawnPoints.Length);
-            Instantiate(spiderPrefab, spiderSpawnPoints[spawnIndex].position, spiderSpawnPoints[spawnIndex].rotation);
+            Spider spider = Instantiate(spiderPrefab, spiderSpawnPoints[spawnIndex].position, spiderSpawnPoints[spawnIndex].rotation);
+            spider.SetSpeed(enemySpeed);
             yield return new WaitForSeconds(spawnInterval); // Adjust spawn rate as needed
         }
     }
