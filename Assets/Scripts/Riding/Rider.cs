@@ -1,24 +1,23 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Movement))]
 public class Rider : MonoBehaviour
 {
     [SerializeField] float horizontalMoveSpeed = 5f;
-    [SerializeField] float verticalMoveSpeed = 5f;
+    [SerializeField] float forwardMoveSpeed = 5f;
+    [SerializeField] float backwardMoveSpeed = 1f;
 
     float maxHorizontalOffset = 10f;
     float maxVerticalOffset = 7f;
 
     Vector2 input;
     Vector2 offset = Vector2.zero;
-
-    Rigidbody2D riderRigidbody;
+    Movement movement;
 
     void Awake()
     {
-        riderRigidbody = GetComponent<Rigidbody2D>();
-        riderRigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
+        movement = GetComponent<Movement>();
     }
 
     void OnEnable()
@@ -39,21 +38,17 @@ public class Rider : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
-        if (RidingPlayer.Instance == null)
-            return;
+        Vector2 velocity = Vector2.zero;
+        velocity += Vector2.right * (input.x * horizontalMoveSpeed);
 
-        Vector2 cameraPosition = RidingPlayer.Instance.transform.position;
+        if (input.y > 0)
+            velocity += Vector2.up * (input.y * forwardMoveSpeed);
+        else if (input.y < 0)
+            velocity += Vector2.up * (input.y * (RidingGame.Instance.MoveSpeed + backwardMoveSpeed));
 
-        offset += Vector2.right * input.x * horizontalMoveSpeed * Time.fixedDeltaTime;
-        offset += Vector2.up * input.y * verticalMoveSpeed * Time.fixedDeltaTime;
-        
-        offset.x = Mathf.Clamp(offset.x, -maxHorizontalOffset, maxHorizontalOffset);
-        offset.y = Mathf.Clamp(offset.y, -maxVerticalOffset, maxVerticalOffset);
-
-        Vector2 targetPosition = cameraPosition + offset;
-        riderRigidbody.MovePosition(targetPosition);
+        movement.SetVelocity(velocity);
     }
 
     void OnMove(Vector2 moveInput)

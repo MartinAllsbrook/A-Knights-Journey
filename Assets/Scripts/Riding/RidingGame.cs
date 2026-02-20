@@ -31,21 +31,29 @@ class RidingGame : MonoBehaviour
             Destroy(gameObject);
     }
 
+    void Start()
+    {
+    }
+
     void Update()
     {
-        if (RidingPlayer.Instance == null)
-            return;
+        // moveSpeed += moveSpeedIncreaseRate * Time.deltaTime;
+        // chunksParent.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        // chunksParent.MovePosition(chunksParent.transform.position + (Vector3.down * moveSpeed * Time.deltaTime));
 
-        moveSpeed += moveSpeedIncreaseRate * Time.deltaTime;
-
-        float playerY = RidingPlayer.Instance.transform.position.y;
-        int currentChunk = Mathf.FloorToInt((playerY - chunksParent.position.y) / chunkSize);
+        int currentChunk = Mathf.FloorToInt((-chunksParent.position.y) / chunkSize);
         UpdateLoadedChunks(currentChunk);
     }
 
     void FixedUpdate()
     {
+        moveSpeed += moveSpeedIncreaseRate * Time.fixedDeltaTime;
         chunksParent.linearVelocity = Vector2.down * moveSpeed;
+
+        // chunksParent.MovePosition(chunksParent.transform.position + (Vector3.down * moveSpeed * Time.fixedDeltaTime));
+
+        // chunksParent.linearVelocity = Vector2.down * moveSpeed;
+
     }
 
     void UpdateLoadedChunks(int currentChunk)
