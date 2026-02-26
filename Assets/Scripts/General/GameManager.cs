@@ -27,9 +27,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Start()
+    void Start()
     {
-        EnterVillage();
+        if (string.IsNullOrEmpty(currentGameplayScene))
+        {
+            EnterVillage();
+        }
+    }
+
+    public string CurrentGameplayScene => currentGameplayScene;
+
+    public void SetInitialGameplayScene(string sceneName)
+    {
+        currentGameplayScene = sceneName;
     }
 
     public void EnterVillage()
