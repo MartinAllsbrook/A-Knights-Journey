@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Main.unity
+    guid: 3c27d4d99631d5b4eb34280d94db0203
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 4a904abc3f540ec41b51a0e7accedd79
+  - enabled: 1
+    path: Assets/Scenes/Archery.unity
+    guid: a7c57fd385b699e4e8ac000ab74b8124
+  - enabled: 1
+    path: Assets/Scenes/Horseback.unity
+    guid: d3826e740b27ecf4aa9cfe5e1b3dfcdf
+  - enabled: 1
+    path: Assets/Scenes/Swordplay.unity
+    guid: 4a7b468d94d92324a92b8781050d12da
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
