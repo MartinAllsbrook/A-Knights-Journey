@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1995712177323649124}
   - component: {fileID: 1746072924792057190}
+  - component: {fileID: 3764429654440701363}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50,6 +51,18 @@ MonoBehaviour:
   swordplaySceneName: SwordplayGame
   ridingSceneName: RidingGame
   villageSceneName: Village
+--- !u!114 &3764429654440701363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354352560773307304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47450126fcbb0ad4faee2f2466babdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &3738089361960225194
 GameObject:
   m_ObjectHideFlags: 0

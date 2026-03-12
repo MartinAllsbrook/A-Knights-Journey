@@ -5,8 +5,12 @@ public class VillageHUD : MonoBehaviour
     public static VillageHUD Instance { get; private set; }
 
     [SerializeField] EnterMinigamePanel enterMinigamePanel;
+
+    [SerializeField] StatSlider archeryStatSlider;
+    [SerializeField] StatSlider swordplayStatSlider;
+    [SerializeField] StatSlider ridingStatSlider;
     
-    public void Awake()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -14,6 +18,19 @@ public class VillageHUD : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    void Start()
+    {
+        UpdateStatSliders();
+    }
+
+    public void UpdateStatSliders()
+    {
+        PlayerStats stats = PlayerStats.Instance;
+        archeryStatSlider.SetStat("Archery", stats.ArcheryLevel, stats.ArcheryXP, 100);
+        swordplayStatSlider.SetStat("Swordplay", stats.SwordplayLevel, stats.SwordplayXP, 100);
+        ridingStatSlider.SetStat("Riding", stats.RidingLevel, stats.RidingXP, 100);
     }
 
     public void ShowEnterMinigamePanel(string minigameName, System.Action enterCallback, System.Action cancelCallback)

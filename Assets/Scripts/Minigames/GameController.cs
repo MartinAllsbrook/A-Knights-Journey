@@ -21,7 +21,9 @@ class GameController : MonoBehaviour
         gameOver = true;
 
         Time.timeScale = 0f; // Pause the game
-        gameOverPanel.ShowGameOver(gameTitle, totalXP, statTexts, xpGained, ReturnToVillage);
+
+        string titleText = $"{gameTitle} Training Over!";
+        gameOverPanel.ShowGameOver(titleText, totalXP, statTexts, xpGained, ReturnToVillage);
     }
 
     void ReturnToVillage()

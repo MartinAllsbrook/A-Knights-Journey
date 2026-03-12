@@ -1454,6 +1454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniGame End Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 6525809949417342657, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
