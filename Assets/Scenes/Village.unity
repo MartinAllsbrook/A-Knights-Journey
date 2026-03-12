@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6617276}
   - component: {fileID: 6617275}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Cancel Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +240,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617273}
   m_CullTransparentMesh: 1
+--- !u!1 &73398679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73398681}
+  - component: {fileID: 73398680}
+  m_Layer: 0
+  m_Name: Village Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73398680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73398679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806c89deb3637f04b892b7fcef7b89dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageManager
+  enterMinigamePanel: {fileID: 280272222}
+--- !u!4 &73398681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73398679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1920, y: 1080, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &115848178
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +298,7 @@ GameObject:
   - component: {fileID: 115848181}
   - component: {fileID: 115848180}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20530,13 +20575,14 @@ GameObject:
   - component: {fileID: 280272219}
   - component: {fileID: 280272221}
   - component: {fileID: 280272220}
+  - component: {fileID: 280272222}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280272219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20597,6 +20643,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280272218}
   m_CullTransparentMesh: 1
+--- !u!114 &280272222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280272218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350b7921f359a754da99aa41f1a76150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnterMinigamePanel
+  panel: {fileID: 280272218}
+  enterButton: {fileID: 115848180}
+  cancelButton: {fileID: 6617275}
+  text: {fileID: 1742313143}
 --- !u!1 &295329565
 GameObject:
   m_ObjectHideFlags: 0
@@ -22182,6 +22244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107272389}
   - component: {fileID: 1107272388}
+  - component: {fileID: 1107272390}
   m_Layer: 0
   m_Name: Enter Game Zone
   m_TagString: Game Zone
@@ -22250,6 +22313,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107272390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107272387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f15fef8dfaddd4f89e6d522238d10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnterGameZone
+  message: Enter Archery Minigame?
+  gameToEnter: 0
 --- !u!1 &1367089954
 GameObject:
   m_ObjectHideFlags: 0
@@ -22265,7 +22342,7 @@ GameObject:
   - component: {fileID: 1367089958}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22385,6 +22462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417388876}
   - component: {fileID: 1417388875}
+  - component: {fileID: 1417388877}
   m_Layer: 0
   m_Name: Enter Game Zone (1)
   m_TagString: Game Zone
@@ -22453,6 +22531,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1417388877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417388874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f15fef8dfaddd4f89e6d522238d10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnterGameZone
+  message: Enter Swordplay Minigame?
+  gameToEnter: 1
 --- !u!1 &1467928035
 GameObject:
   m_ObjectHideFlags: 0
@@ -22463,6 +22555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467928037}
   - component: {fileID: 1467928036}
+  - component: {fileID: 1467928038}
   m_Layer: 0
   m_Name: Enter Game Zone (2)
   m_TagString: Game Zone
@@ -22531,6 +22624,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1467928038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467928035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f15fef8dfaddd4f89e6d522238d10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnterGameZone
+  message: Enter Riding Minigame?
+  gameToEnter: 2
 --- !u!1 &1575211935
 GameObject:
   m_ObjectHideFlags: 0
@@ -23055,3 +23162,4 @@ SceneRoots:
   - {fileID: 1107272389}
   - {fileID: 1417388876}
   - {fileID: 1467928037}
+  - {fileID: 73398681}

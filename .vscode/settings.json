@@ -67,5 +67,8 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "A-Knights-Journey.slnx"
+    "dotnet.defaultSolution": "A-Knights-Journey.slnx",
+    "cSpell.words": [
+        "Minigame"
+    ]
 }

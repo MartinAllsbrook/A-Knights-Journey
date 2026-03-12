@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e375a0e78589645b4453205dc56675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  archerySceneName: Archery
-  swordplaySceneName: Swordplay
-  ridingSceneName: Riding
+  archerySceneName: ArcheryGame
+  swordplaySceneName: SwordplayGame
+  ridingSceneName: RidingGame
   villageSceneName: Village
 --- !u!1 &3738089361960225194
 GameObject:

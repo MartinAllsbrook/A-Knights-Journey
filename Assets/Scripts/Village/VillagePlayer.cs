@@ -21,14 +21,6 @@ public class VillagePlayer : MonoBehaviour
     {
         InputManager.Village_OnMove -= OnMove;
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Game Zone"))
-        {
-            Debug.Log("Entered game zone: " + collision.gameObject.name);    
-        }
-    }
         
     void OnMove(Vector2 moveInput)
     {

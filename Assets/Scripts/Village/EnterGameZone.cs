@@ -19,18 +19,7 @@ public class EnterGameZone : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log(message);
-            switch (gameToEnter)
-            {
-                case GameType.Archery:
-                    GameManager.Instance.EnterArcheryGame();
-                    break;
-                case GameType.Swordplay:
-                    GameManager.Instance.EnterSwordplayGame();
-                    break;
-                case GameType.Riding:
-                    GameManager.Instance.EnterRidingGame();
-                    break;
-            }
+            VillageManager.Instance.ShowEnterGameMessage(gameToEnter);
         }
     }
 }
