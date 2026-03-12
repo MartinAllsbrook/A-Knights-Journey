@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArcheryGameController : MonoBehaviour
+class ArcheryGameController : GameController
 {
     public static ArcheryGameController Instance { get; private set; }
 
     [Header("References")]
     [SerializeField] ArcheryHUDController hudController;
-    [SerializeField] ArcheryGameOverScreen gameOverScreen;
     [SerializeField] Transform[] spawnPoints;
 
     [Header("Prefabs")]
@@ -16,6 +15,9 @@ public class ArcheryGameController : MonoBehaviour
     [Header("Game Settings")]
     [SerializeField] float spawnInterval = 2f;
     [SerializeField] float gameDuration = 60f;
+
+    [SerializeField] float accuracyXPRate = 100f;
+    [SerializeField] float scoreXPRate = 4f;
 
     int score = 0;
     float timeRemaining;
@@ -35,8 +37,10 @@ public class ArcheryGameController : MonoBehaviour
         }
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         timeRemaining = gameDuration;
 
         SpawnTarget();
@@ -48,7 +52,7 @@ public class ArcheryGameController : MonoBehaviour
         timeRemaining -= Time.deltaTime;
         hudController.UpdateTimer(timeRemaining);
 
-        if (timeRemaining <= 0f)
+        if (timeRemaining <= 0f && !gameOver)
         {
             EndGame();
         }
@@ -75,11 +79,33 @@ public class ArcheryGameController : MonoBehaviour
         hudController.UpdateScore(score);
     }
 
+    // Overloads parent `EndGame()`
     void EndGame()
     {
-        // Handle end game logic here (e.g., show game over screen, stop spawning targets, etc.)
-        StopAllCoroutines();
-        gameOverScreen.ShowGameOverScreen(score, shotsTaken, shotsHit, totalTargets);
+        // Score
+        int scoreXP = Mathf.RoundToInt(score * scoreXPRate); // 1 XP per point
+        string scoreText = $"FINAL SCORE: {score}";
+
+        // Accuracy
+        float accuracy = shotsTaken > 0 ? (float)shotsHit / shotsTaken : 0f;
+        int accuracyXP = Mathf.RoundToInt(accuracy * accuracyXPRate);
+        string accuracyText = $"ACCURACY: {(accuracy * 100f):F1}%";
+
+        // Total XP
+        int totalXP = scoreXP + accuracyXP;
+
+        string[] statTexts = new string[]
+        {
+            scoreText,
+            accuracyText,
+        };
+        int[] xpGained = new int[]
+        {
+            scoreXP,
+            accuracyXP,
+        };
+
+        EndGame(totalXP, statTexts, xpGained);
     }
 
     public void TallyShot()
