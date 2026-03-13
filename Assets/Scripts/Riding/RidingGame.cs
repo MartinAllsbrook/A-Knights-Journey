@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-class RidingGame : MonoBehaviour
+class RidingGame : GameController
 {
     public static RidingGame Instance { get; private set; }
 
     [Header("References")]
-    [SerializeField] GameObject gameOverScreen;
     [SerializeField] Rigidbody2D chunksParent;
+
     [Header("Prefabs")]
     [SerializeField] Transform[] chunkPrefabs;
 
@@ -29,10 +29,6 @@ class RidingGame : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-    }
-
-    void Start()
-    {
     }
 
     void Update()
@@ -93,12 +89,11 @@ class RidingGame : MonoBehaviour
 
     public void PlayerHit()
     {
-        GameOver();
+        EndGame();
     }
 
-    void GameOver()
+    void EndGame()
     {
-        Time.timeScale = 0f;
-        gameOverScreen.SetActive(true);
+        EndGame(SkillType.Riding, new string[0], new int[0]);
     }
 }

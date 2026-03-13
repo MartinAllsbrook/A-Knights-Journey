@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum SkillType
+{
+    Archery,
+    Swordplay,
+    Riding
+}
+
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance { get; private set; }
@@ -32,22 +39,23 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void AddArcheryXP(int xp)
+    public void AddXP(SkillType skill, int xp)
     {
-        archeryXP += xp;
-        CheckLevelUp(ref archeryLevel, ref archeryXP);
-    }
-
-    public void AddSwordplayXP(int xp)
-    {
-        swordplayXP += xp;
-        CheckLevelUp(ref swordplayLevel, ref swordplayXP);
-    }
-
-    public void AddRidingXP(int xp)
-    {
-        ridingXP += xp;
-        CheckLevelUp(ref ridingLevel, ref ridingXP);
+        switch (skill)
+        {
+            case SkillType.Archery:
+                archeryXP += xp;
+                CheckLevelUp(ref archeryLevel, ref archeryXP);
+                break;
+            case SkillType.Swordplay:
+                swordplayXP += xp;
+                CheckLevelUp(ref swordplayLevel, ref swordplayXP);
+                break;
+            case SkillType.Riding:
+                ridingXP += xp;
+                CheckLevelUp(ref ridingLevel, ref ridingXP);
+                break;
+        }
     }
 
     private void CheckLevelUp(ref int level, ref int xp)
@@ -63,6 +71,6 @@ public class PlayerStats : MonoBehaviour
 
     private int GetXPForNextLevel(int level)
     {
-        return 100 * level * level; // Example: XP needed grows quadratically
+        return 100; // * level;
     }
 }

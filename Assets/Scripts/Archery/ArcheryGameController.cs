@@ -91,9 +91,6 @@ class ArcheryGameController : GameController
         int accuracyXP = Mathf.RoundToInt(accuracy * accuracyXPRate);
         string accuracyText = $"ACCURACY: {(accuracy * 100f):F1}%";
 
-        // Total XP
-        int totalXP = scoreXP + accuracyXP;
-
         string[] statTexts = new string[]
         {
             scoreText,
@@ -105,7 +102,7 @@ class ArcheryGameController : GameController
             accuracyXP,
         };
 
-        EndGame(totalXP, statTexts, xpGained);
+        EndGame(SkillType.Archery, statTexts, xpGained);
     }
 
     public void TallyShot()

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-class SwordplayGame : MonoBehaviour
+class SwordplayGame : GameController
 {
     public static SwordplayGame Instance { get; private set; }
 
@@ -31,8 +31,9 @@ class SwordplayGame : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         currentLives = startingLives;
         currentScore = 0;
         hud.UpdateLives(currentLives);
@@ -65,7 +66,7 @@ class SwordplayGame : MonoBehaviour
         hud.UpdateLives(currentLives);
         if (currentLives <= 0)
         {
-            GameOver();
+            EndGame();
         }
     }
 
@@ -75,9 +76,8 @@ class SwordplayGame : MonoBehaviour
         hud.UpdateScore(currentScore);
     }
 
-    void GameOver()
+    void EndGame()
     {
-        Debug.Log("Swordplay: Game Over");
-        // Implement game over logic (e.g., show game over screen, reset game, etc.)
+        EndGame(SkillType.Swordplay, new string[0], new int[0]);
     }
 }
