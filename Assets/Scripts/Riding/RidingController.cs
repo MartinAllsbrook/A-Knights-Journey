@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-class RidingGame : GameController
+class RidingController : MinigameController
 {
-    public static RidingGame Instance { get; private set; }
+    public static RidingController Instance { get; private set; }
 
     [Header("References")]
     [SerializeField] Rigidbody2D chunksParent;

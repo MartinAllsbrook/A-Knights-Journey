@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ArcheryPlayer : MinigamePlayer
 {
     [SerializeField] float moveSpeed;
     [SerializeField] Arrow arrowPrefab;

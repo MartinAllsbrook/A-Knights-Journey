@@ -1,13 +1,15 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
-class ArcheryGameController : GameController
+class ArcheryController : MinigameController
 {
-    public static ArcheryGameController Instance { get; private set; }
+    public static ArcheryController Instance { get; private set; }
 
     [Header("References")]
-    [SerializeField] ArcheryHUDController hudController;
     [SerializeField] Transform[] spawnPoints;
+    [SerializeField] TextMeshProUGUI timerText;
+
 
     [Header("Prefabs")]
     [SerializeField] Target targetPrefab;
@@ -50,12 +52,17 @@ class ArcheryGameController : GameController
     void Update()
     {
         timeRemaining -= Time.deltaTime;
-        hudController.UpdateTimer(timeRemaining);
+        UpdateTimer(timeRemaining);
 
         if (timeRemaining <= 0f && !gameOver)
         {
             EndGame();
         }
+    }
+
+    public void UpdateTimer(float timeRemaining)
+    {
+        timerText.text = $"{timeRemaining:F1}s";
     }
 
     IEnumerator SpawnTargetsRoutine()
@@ -76,7 +83,7 @@ class ArcheryGameController : GameController
     public void AddScore(int points)
     {
         score += points;
-        hudController.UpdateScore(score);
+        scoreboard.UpdateScore(score.ToString());
     }
 
     // Overloads parent `EndGame()`

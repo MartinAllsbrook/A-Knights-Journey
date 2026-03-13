@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Obstacle
   - Game Zone
+  - Coin
   layers:
   - Default
   - TransparentFX

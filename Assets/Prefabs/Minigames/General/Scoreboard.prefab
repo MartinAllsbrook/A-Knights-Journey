@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4908519711862754234}
   - component: {fileID: 7066274437145076869}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coins Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,10 +34,10 @@ RectTransform:
   - {fileID: 6651375937350101235}
   m_Father: {fileID: 637225456646763763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.963, y: -70.2}
-  m_SizeDelta: {x: 289.93, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -125}
+  m_SizeDelta: {x: 0.0043029785, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4908519711862754234
 CanvasRenderer:
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1152771696763697327}
   - component: {fileID: 7605936870295165097}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Coins Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 4259288308941156856}
   - component: {fileID: 1290920069727782581}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Score Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,10 +247,10 @@ RectTransform:
   - {fileID: 3928218202503681235}
   m_Father: {fileID: 637225456646763763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.963, y: 50}
-  m_SizeDelta: {x: 289.93, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0043029785, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4259288308941156856
 CanvasRenderer:
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 5798728587277553109}
   - component: {fileID: 8183636141839535451}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,6 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637225456646763763}
   - component: {fileID: 4846954198189080759}
+  - component: {fileID: 429798188727240204}
   m_Layer: 5
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -473,6 +474,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7562179204727070886}
   m_CullTransparentMesh: 1
+--- !u!114 &429798188727240204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562179204727070886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4336316ba52fd544e86e5384f9728048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
+  scoreText: {fileID: 8183636141839535451}
+  coinsText: {fileID: 7605936870295165097}
 --- !u!1 &9176452671138312544
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +500,7 @@ GameObject:
   - component: {fileID: 1783913274435723490}
   - component: {fileID: 5134180378903621425}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Coins Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

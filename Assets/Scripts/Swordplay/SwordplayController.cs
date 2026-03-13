@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-class SwordplayGame : GameController
+class SwordplayController : MinigameController
 {
-    public static SwordplayGame Instance { get; private set; }
+    public static SwordplayController Instance { get; private set; }
 
     [Header("Game Settings")]
     [SerializeField] int startingLives = 3;

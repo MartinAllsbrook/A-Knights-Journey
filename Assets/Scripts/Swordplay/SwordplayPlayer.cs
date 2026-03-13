@@ -1,6 +1,6 @@
 using UnityEngine;
 
-class SwordplayPlayerController : MonoBehaviour
+class SwordplayPlayer : MinigamePlayer
 {
     [Header("Sword References")]
     [SerializeField] GameObject upSword;

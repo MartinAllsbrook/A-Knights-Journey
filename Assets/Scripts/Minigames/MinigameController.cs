@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// Base game controller class meant to be extended into specific minigame controllers
 
-class GameController : MonoBehaviour
+public class MinigameController : MonoBehaviour
 {
     [SerializeField] GameOverPanel gameOverPanel;
     [SerializeField] protected Scoreboard scoreboard;

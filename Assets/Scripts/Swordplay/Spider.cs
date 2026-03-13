@@ -26,13 +26,13 @@ public class Spider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SwordplayGame.Instance.PlayerHit();
+            SwordplayController.Instance.PlayerHit();
             Destroy(gameObject);
         }
 
         if (collision.CompareTag("Sword"))
         {
-            SwordplayGame.Instance.EnemyDefeated();
+            SwordplayController.Instance.EnemyDefeated();
             Destroy(gameObject);
         }
     }
