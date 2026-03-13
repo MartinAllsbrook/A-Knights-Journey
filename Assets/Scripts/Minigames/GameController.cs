@@ -5,9 +5,12 @@ using UnityEngine;
 class GameController : MonoBehaviour
 {
     [SerializeField] GameOverPanel gameOverPanel;
+    [SerializeField] protected Scoreboard scoreboard;
     [SerializeField] string gameTitle;
 
     protected bool gameOver;
+
+    protected int coinsCollected = 0;
 
     protected virtual void Start()
     {
@@ -33,6 +36,12 @@ class GameController : MonoBehaviour
         PlayerStats.Instance.AddXP(skill, totalXP);
 
         gameOverPanel.ShowGameOver(titleText, totalXP, statTexts, xpGained, ReturnToVillage);
+    }
+
+    public void CollectCoin()
+    {
+        coinsCollected ++;
+        scoreboard.UpdateCoins(coinsCollected);
     }
 
     void ReturnToVillage()

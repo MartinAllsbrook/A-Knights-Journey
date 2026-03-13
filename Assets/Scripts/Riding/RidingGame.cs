@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 class RidingGame : GameController
 {
@@ -23,6 +24,9 @@ class RidingGame : GameController
 
     readonly Dictionary<int, Transform> loadedChunks = new Dictionary<int, Transform>();
 
+    // Stats
+    float distanceTraveled = 0f;
+
     void Awake()
     {
         if (Instance == null)
@@ -33,23 +37,18 @@ class RidingGame : GameController
 
     void Update()
     {
-        // moveSpeed += moveSpeedIncreaseRate * Time.deltaTime;
-        // chunksParent.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
-        // chunksParent.MovePosition(chunksParent.transform.position + (Vector3.down * moveSpeed * Time.deltaTime));
-
         int currentChunk = Mathf.FloorToInt((-chunksParent.position.y) / chunkSize);
         UpdateLoadedChunks(currentChunk);
+
+        // Update distance traveled
+        distanceTraveled = -chunksParent.position.y;
+        scoreboard.UpdateScore($"{distanceTraveled:F1}m");
     }
 
     void FixedUpdate()
     {
         moveSpeed += moveSpeedIncreaseRate * Time.fixedDeltaTime;
         chunksParent.linearVelocity = Vector2.down * moveSpeed;
-
-        // chunksParent.MovePosition(chunksParent.transform.position + (Vector3.down * moveSpeed * Time.fixedDeltaTime));
-
-        // chunksParent.linearVelocity = Vector2.down * moveSpeed;
-
     }
 
     void UpdateLoadedChunks(int currentChunk)
@@ -94,6 +93,13 @@ class RidingGame : GameController
 
     void EndGame()
     {
-        EndGame(SkillType.Riding, new string[0], new int[0]);
+        // Distance
+        string distanceText = $"DISTANCE: {distanceTraveled:F1}m";
+        int distanceXP = Mathf.RoundToInt(distanceTraveled / 10f); // 1 XP per 10 meters
+        
+        string[] statTexts = new string[] { distanceText };
+        int[] statXPs = new int[] { distanceXP };
+
+        EndGame(SkillType.Riding, statTexts, statXPs);
     }
 }
