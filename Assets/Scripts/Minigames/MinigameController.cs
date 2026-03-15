@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinigameController : MonoBehaviour
 {
     [SerializeField] GameOverPanel gameOverPanel;
-    [SerializeField] protected Scoreboard scoreboard;
+    [SerializeField] Scoreboard scoreboard;
     [SerializeField] string gameTitle;
 
     protected bool gameOver;
@@ -36,6 +36,11 @@ public class MinigameController : MonoBehaviour
         PlayerStats.Instance.AddXP(skill, totalXP);
 
         gameOverPanel.ShowGameOver(titleText, totalXP, statTexts, xpGained, ReturnToVillage);
+    }
+
+    protected void UpdateScore(string score)
+    {
+        scoreboard.UpdateScore(score);
     }
 
     public void CollectCoin()

@@ -83,7 +83,7 @@ class ArcheryController : MinigameController
     public void AddScore(int points)
     {
         score += points;
-        scoreboard.UpdateScore(score.ToString());
+        UpdateScore(score.ToString());
     }
 
     // Overloads parent `EndGame()`

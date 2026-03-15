@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 class SwordplayController : MinigameController
@@ -14,8 +15,8 @@ class SwordplayController : MinigameController
     [SerializeField] float enemySpeedIncreaseRate = 0.1f;
 
     [Header("References")]
-    [SerializeField] SwordplayHUD hud;
     [SerializeField] Transform[] spiderSpawnPoints;
+    [SerializeField] HealthBar healthBar;
 
     [Header("Prefabs")]
     [SerializeField] Spider spiderPrefab;
@@ -36,8 +37,8 @@ class SwordplayController : MinigameController
         base.Start();
         currentLives = startingLives;
         currentScore = 0;
-        hud.UpdateLives(currentLives);
-        hud.UpdateScore(currentScore);
+        UpdateLives(currentLives);
+        UpdateScore(currentScore.ToString());
         Debug.Log($"Swordplay: Game Started - Lives: {currentLives}, Score: {currentScore}");
         StartCoroutine(SpawnSpiders());
     }
@@ -63,17 +64,23 @@ class SwordplayController : MinigameController
     public void PlayerHit()
     {
         currentLives--;
-        hud.UpdateLives(currentLives);
+        UpdateLives(currentLives);
         if (currentLives <= 0)
         {
             EndGame();
         }
     }
+    
+    protected void UpdateLives(int health)
+    {
+        healthBar.UpdateHealthBar(health);
+    }
+
 
     public void EnemyDefeated()
     {
         currentScore += 1;
-        hud.UpdateScore(currentScore);
+        UpdateScore(currentScore.ToString());
     }
 
     void EndGame()

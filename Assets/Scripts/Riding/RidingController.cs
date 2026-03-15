@@ -42,7 +42,7 @@ class RidingController : MinigameController
 
         // Update distance traveled
         distanceTraveled = -chunksParent.position.y;
-        scoreboard.UpdateScore($"{distanceTraveled:F1}m");
+        UpdateScore($"{distanceTraveled:F1}m");
     }
 
     void FixedUpdate()
