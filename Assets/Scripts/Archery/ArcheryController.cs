@@ -7,12 +7,8 @@ class ArcheryController : MinigameController
     public static ArcheryController Instance { get; private set; }
 
     [Header("References")]
-    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] Target[] staticTargets;
     [SerializeField] TextMeshProUGUI timerText;
-
-
-    [Header("Prefabs")]
-    [SerializeField] Target targetPrefab;
 
     [Header("Game Settings")]
     [SerializeField] float spawnInterval = 2f;
@@ -76,8 +72,10 @@ class ArcheryController : MinigameController
 
     void SpawnTarget()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(targetPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        var available = System.Array.FindAll(staticTargets, t => !t.IsDeployed);
+        if (available.Length == 0) return;
+
+        available[Random.Range(0, available.Length)].DeployTarget();
     }
 
     public void AddScore(int points)

@@ -17,10 +17,28 @@ class Arrow : MonoBehaviour
     {
         if (collision.CompareTag("Target"))
         {
+            Target target = collision.GetComponent<Target>();
+            if (target != null)
+            {
+                target.RetractTarget(); 
+            }
+
             ArcheryController.Instance.TallyHit();
-              ArcheryController.Instance.AddScore(1); // Award points for hitting a target
+            ArcheryController.Instance.AddScore(1); // Award points for hitting a target
         }
-        // Handle collision logic here (e.g., damage, destroy arrow, etc.)
+
+        if (collision.CompareTag("Coin"))
+        {
+            Coin coin = collision.GetComponent<Coin>();
+            if (coin != null)
+            {
+                coin.Collect(); 
+                ArcheryController.Instance.CollectCoin(); 
+            }
+
+            ArcheryController.Instance.TallyHit();
+        }
+
         ArcheryController.Instance.TallyShot();
         Destroy(gameObject);
     }

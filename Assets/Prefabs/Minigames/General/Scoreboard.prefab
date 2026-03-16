@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 637225456646763763}
   - component: {fileID: 4846954198189080759}
   - component: {fileID: 429798188727240204}
+  - component: {fileID: 3294804656258154305}
   m_Layer: 5
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -488,6 +489,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
   scoreText: {fileID: 8183636141839535451}
   coinsText: {fileID: 7605936870295165097}
+--- !u!225 &3294804656258154305
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562179204727070886}
+  m_Enabled: 1
+  m_Alpha: 0.9
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9176452671138312544
 GameObject:
   m_ObjectHideFlags: 0

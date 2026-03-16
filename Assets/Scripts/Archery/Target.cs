@@ -1,21 +1,65 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class Target : MonoBehaviour
 {
-    Rigidbody2D rb;
+    [SerializeField] Transform targetTransform;
+    [SerializeField] Collider2D colliderObject;
+    [SerializeField] float deployTime = 0.2f;
+    [SerializeField] float retractTime = 0.05f;
 
-    void Start()
+    [SerializeField] Vector3 downPosition = new Vector3(0f, 0f, 0f);
+    [SerializeField] Vector3 upPosition = new Vector3(0f, 1f, 0f);
+
+    bool isDeployed = false;
+    public bool IsDeployed => isDeployed;
+
+    public void DeployTarget()
     {
-        rb = GetComponent<Rigidbody2D>();
-
+        colliderObject.enabled = true;
         ArcheryController.Instance.TallyTarget();
+        isDeployed = true;
+        StopAllCoroutines();
+        StartCoroutine(ShowTargetRoutine());
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void RetractTarget()
     {
-        // Handle collision logic here (e.g., score points, destroy target, etc.)
-        Destroy(gameObject);
+        colliderObject.enabled = false;
+        isDeployed = false;
+        StopAllCoroutines();
+        StartCoroutine(RetractTargetRoutine());
+    }
+
+    IEnumerator ShowTargetRoutine()
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPos = transform.position + downPosition;
+        Vector3 targetPos = transform.position + upPosition;
+
+        while (elapsedTime < deployTime)
+        {
+            targetTransform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / deployTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetTransform.position = targetPos;
+    }
+
+    IEnumerator RetractTargetRoutine()
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPos = transform.position + upPosition;
+        Vector3 targetPos = transform.position + downPosition;
+
+        while (elapsedTime < retractTime)
+        {
+            targetTransform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / retractTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetTransform.position = targetPos;
     }
 }

@@ -45,7 +45,7 @@ public class MinigameController : MonoBehaviour
 
     public void CollectCoin()
     {
-        coinsCollected ++;
+        coinsCollected++;
         scoreboard.UpdateCoins(coinsCollected);
     }
 
