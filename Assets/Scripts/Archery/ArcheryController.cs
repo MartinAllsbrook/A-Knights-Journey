@@ -9,6 +9,7 @@ class ArcheryController : MinigameController
     [Header("References")]
     [SerializeField] Target[] staticTargets;
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] RailLine railLine;
 
     [Header("Game Settings")]
     [SerializeField] float spawnInterval = 2f;
@@ -41,7 +42,6 @@ class ArcheryController : MinigameController
 
         timeRemaining = gameDuration;
 
-        SpawnTarget();
         StartCoroutine(SpawnTargetsRoutine());
     }
 
@@ -63,10 +63,19 @@ class ArcheryController : MinigameController
 
     IEnumerator SpawnTargetsRoutine()
     {
+        int count = 0;
         while (true)
         {
+            count++;
+            if (count % 5 == 0) // Every 5 spawns, spawn a cart
+            {
+                railLine.SpawnCarts(5);
+            }
+            else
+            {
+                SpawnTarget();
+            }
             yield return new WaitForSeconds(spawnInterval); // Adjust spawn rate as needed
-            SpawnTarget();
         }
     }
 

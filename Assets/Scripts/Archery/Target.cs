@@ -34,32 +34,36 @@ public class Target : MonoBehaviour
     IEnumerator ShowTargetRoutine()
     {
         float elapsedTime = 0f;
-        Vector3 startingPos = transform.position + downPosition;
-        Vector3 targetPos = transform.position + upPosition;
+        
 
         while (elapsedTime < deployTime)
         {
-            targetTransform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / deployTime);
+            Vector3 startingPos = transform.position + downPosition;
+            Vector3 endPos = transform.position + upPosition;
+
+            targetTransform.position = Vector3.Lerp(startingPos, endPos, elapsedTime / deployTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        targetTransform.position = targetPos;
+        targetTransform.position = transform.position + upPosition;
     }
 
     IEnumerator RetractTargetRoutine()
     {
         float elapsedTime = 0f;
-        Vector3 startingPos = transform.position + upPosition;
-        Vector3 targetPos = transform.position + downPosition;
+        
 
         while (elapsedTime < retractTime)
         {
-            targetTransform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / retractTime);
+            Vector3 startingPos = transform.position + upPosition;
+            Vector3 endPos = transform.position + downPosition;
+
+            targetTransform.position = Vector3.Lerp(startingPos, endPos, elapsedTime / retractTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        targetTransform.position = targetPos;
+        targetTransform.position = transform.position + downPosition;
     }
 }
