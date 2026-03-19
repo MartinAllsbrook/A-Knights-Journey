@@ -10,6 +10,7 @@ class RidingController : MinigameController
     [SerializeField] Rigidbody2D chunksParent;
 
     [Header("Prefabs")]
+    [SerializeField] Transform initialChunkPrefab;
     [SerializeField] Transform[] chunkPrefabs;
 
     [Header("Chunk Settings")]
@@ -80,8 +81,8 @@ class RidingController : MinigameController
 
     Transform SpawnChunk(int chunkIndex)
     {
-        int randomIndex = Random.Range(0, chunkPrefabs.Length);
-        Transform chunk = Instantiate(chunkPrefabs[randomIndex], chunksParent.transform);
+        Transform prefab = chunkIndex == 0 ? initialChunkPrefab : chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
+        Transform chunk = Instantiate(prefab, chunksParent.transform);
         chunk.localPosition = new Vector3(0, chunkIndex * chunkSize, 0);
         return chunk;
     }
