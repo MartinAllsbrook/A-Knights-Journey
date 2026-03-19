@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 class SwordplayPlayer : MinigamePlayer
 {
+    public static SwordplayPlayer instance;
+
     [Header("Sword References")]
     [SerializeField] GameObject sword;
 
@@ -32,6 +34,12 @@ class SwordplayPlayer : MinigamePlayer
     protected override void Awake()
     {
         base.Awake();
+
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         movement = GetComponent<Movement>();
     }
 
