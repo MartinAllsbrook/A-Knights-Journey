@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 class InputManager : MonoBehaviour
@@ -19,6 +20,7 @@ class InputManager : MonoBehaviour
 
     // Riding
     public static event Action<Vector2> Riding_OnMove = delegate {};
+    public static event Action Riding_OnDash = delegate {};
 
     void Awake()
     {
@@ -68,5 +70,7 @@ class InputManager : MonoBehaviour
         // Riding
         controls.Riding.Move.performed += ctx => Riding_OnMove.Invoke(ctx.ReadValue<Vector2>());
         controls.Riding.Move.canceled += ctx => Riding_OnMove.Invoke(Vector2.zero);
+        
+        controls.Riding.Dash.performed += ctx => Riding_OnDash.Invoke();
     }
 }

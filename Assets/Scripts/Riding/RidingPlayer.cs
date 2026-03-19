@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Movement))]
@@ -7,9 +9,15 @@ public class RidingPlayer : MinigamePlayer
     [SerializeField] float horizontalMoveSpeed = 5f;
     [SerializeField] float forwardMoveSpeed = 5f;
     [SerializeField] float backwardMoveSpeed = 1f;
+    [SerializeField] DashSlider dashSlider;
+
+    [Header("Dash")]
+    [SerializeField] float dashCooldown = 2f;
 
     float maxHorizontalOffset = 10f;
     float maxVerticalOffset = 7f;
+
+    bool canDash = true;
 
     Vector2 input;
     Vector2 offset = Vector2.zero;
@@ -25,6 +33,7 @@ public class RidingPlayer : MinigamePlayer
     void OnEnable()
     {
         InputManager.Riding_OnMove += OnMove;
+        InputManager.Riding_OnDash += OnDash;
     }
 
     void OnDisable()
@@ -59,4 +68,31 @@ public class RidingPlayer : MinigamePlayer
     {
         input = moveInput;
     }
+
+    void OnDash()
+    {
+        if (canDash)
+        {
+            movement.Dash();
+            canDash = false;
+            StartCoroutine(DashCooldownRoutine());
+        }
+    }
+
+    IEnumerator DashCooldownRoutine()
+    {
+        float cooldown = dashCooldown;
+        float elapsed = 0f;
+
+        while (elapsed < cooldown)
+        {
+            elapsed += Time.deltaTime;
+            dashSlider.SetFill(elapsed / cooldown);
+            yield return null;
+        }
+
+        canDash = true;
+        dashSlider.SetFill(1f);
+    }
+
 }

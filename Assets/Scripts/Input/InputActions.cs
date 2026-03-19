@@ -284,6 +284,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ad4c0c0-b563-486b-b550-87381326ed5d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -341,6 +350,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db2b0bfa-6478-4e80-abac-043bb87633a6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -430,6 +450,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Riding
         m_Riding = asset.FindActionMap("Riding", throwIfNotFound: true);
         m_Riding_Move = m_Riding.FindAction("Move", throwIfNotFound: true);
+        m_Riding_Dash = m_Riding.FindAction("Dash", throwIfNotFound: true);
         // Village
         m_Village = asset.FindActionMap("Village", throwIfNotFound: true);
         m_Village_Move = m_Village.FindAction("Move", throwIfNotFound: true);
@@ -731,6 +752,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Riding;
     private List<IRidingActions> m_RidingActionsCallbackInterfaces = new List<IRidingActions>();
     private readonly InputAction m_Riding_Move;
+    private readonly InputAction m_Riding_Dash;
     /// <summary>
     /// Provides access to input actions defined in input action map "Riding".
     /// </summary>
@@ -746,6 +768,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Riding/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Riding_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Riding/Dash".
+        /// </summary>
+        public InputAction @Dash => m_Wrapper.m_Riding_Dash;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -775,6 +801,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         /// <summary>
@@ -789,6 +818,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         /// <summary>
@@ -976,6 +1008,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDash(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Village" which allows adding and removing callbacks.
