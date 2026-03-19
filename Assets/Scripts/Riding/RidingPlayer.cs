@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class RidingPlayer : MinigamePlayer
 {
     [SerializeField] float horizontalMoveSpeed = 5f;
-    [SerializeField] float forwardMoveSpeed = 5f;
-    [SerializeField] float backwardMoveSpeed = 1f;
     [SerializeField] DashSlider dashSlider;
 
     [Header("Dash")]
@@ -38,7 +36,8 @@ public class RidingPlayer : MinigamePlayer
 
     void OnDisable()
     {
-        InputManager.Riding_OnMove -= OnMove;
+        InputManager.Riding_OnMove -= OnMove;   
+        InputManager.Riding_OnDash -= OnDash;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -56,17 +55,12 @@ public class RidingPlayer : MinigamePlayer
         Vector2 velocity = Vector2.zero;
         velocity += Vector2.right * (input.x * horizontalMoveSpeed);
 
-        if (input.y > 0)
-            velocity += Vector2.up * (input.y * forwardMoveSpeed);
-        else if (input.y < 0)
-            velocity += Vector2.up * (input.y * (RidingController.Instance.MoveSpeed + backwardMoveSpeed));
-
         movement.SetVelocity(velocity);
     }
 
-    void OnMove(Vector2 moveInput)
+    void OnMove(float moveInput)
     {
-        input = moveInput;
+        input = new Vector2(moveInput, input.y);
     }
 
     void OnDash()

@@ -19,7 +19,7 @@ class InputManager : MonoBehaviour
     public static event Action<Vector2> Swordplay_OnMove = delegate {};
 
     // Riding
-    public static event Action<Vector2> Riding_OnMove = delegate {};
+    public static event Action<float> Riding_OnMove = delegate {};
     public static event Action Riding_OnDash = delegate {};
 
     void Awake()
@@ -68,8 +68,8 @@ class InputManager : MonoBehaviour
         controls.Swordplay.Move.canceled += ctx => Swordplay_OnMove.Invoke(Vector2.zero);
 
         // Riding
-        controls.Riding.Move.performed += ctx => Riding_OnMove.Invoke(ctx.ReadValue<Vector2>());
-        controls.Riding.Move.canceled += ctx => Riding_OnMove.Invoke(Vector2.zero);
+        controls.Riding.Move.performed += ctx => Riding_OnMove.Invoke(ctx.ReadValue<float>());
+        controls.Riding.Move.canceled += ctx => Riding_OnMove.Invoke(0f);
         
         controls.Riding.Dash.performed += ctx => Riding_OnDash.Invoke();
     }
