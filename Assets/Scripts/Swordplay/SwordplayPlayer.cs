@@ -20,6 +20,8 @@ class SwordplayPlayer : MinigamePlayer
     [SerializeField] float attackDuration = 0.15f;
     [SerializeField] float movementSpeed = 5f;
 
+    [SerializeField] string attackDirection = "";
+
     float attackTimer = 0f;
 
     Vector2 movementInput;
@@ -49,6 +51,17 @@ class SwordplayPlayer : MinigamePlayer
     {
         movementInput = input;
         movement.SetVelocity(movementInput * movementSpeed);
+
+        // Attack Direction
+        if (input.x < -0.1f)
+            attackDirection = "Left";
+        else if (input.x > 0.1f)
+            attackDirection = "Right";
+        else if (input.y < -0.1f)
+            attackDirection = "Down";
+        else if (input.y > 0.1f)
+            attackDirection = "Up";
+
 
         string newDirection = GetDirectionFromInput(input);
         if (newDirection != "")
@@ -91,9 +104,9 @@ class SwordplayPlayer : MinigamePlayer
 
     void OnAttack()
     {
-        if (direction != "")
+        if (attackDirection != "")
         {
-            Attack(direction);
+            Attack(attackDirection);
         }
     }
 
@@ -106,39 +119,23 @@ class SwordplayPlayer : MinigamePlayer
         {
             case "Up":
                 // Flipped and offset
-                startAngle = 45f;
-                endAngle = -45f;
-                break;
-            case "UpRight":
-                startAngle = 0f;
-                endAngle = -90f;
+                startAngle = -60f;
+                endAngle = 60f;
                 break;
             case "Right":
                 // Flipped
-                startAngle = -45f;
-                endAngle = -135f;
-                break;
-            case "DownRight":
-                startAngle = -90f;
-                endAngle = -180f;
+                startAngle = -150f;
+                endAngle = -30f;
                 break;
             case "Down":
                 // Flipped and offset
-                startAngle = -135f;
-                endAngle = -225f;
-                break;
-            case "DownLeft":
-                startAngle = 180f;
-                endAngle = 90f;
+                startAngle = -240f;
+                endAngle = -120f;
                 break;
             case "Left":
                 // Flipped
-                startAngle = 135f;
-                endAngle = 45f;
-                break;
-            case "UpLeft":
-                startAngle = 90f;
-                endAngle = 0f;
+                startAngle = 30f;
+                endAngle = 150f;
                 break;
             default:
                 return;
