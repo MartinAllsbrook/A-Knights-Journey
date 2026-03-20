@@ -555,7 +555,7 @@ MonoBehaviour:
   - {fileID: 451645292234427816, guid: c78cb7423ed718042b48664d50dbfa7a, type: 3}
   chunkSize: 100
   loadedDistance: 3
-  moveSpeed: 5
+  moveSpeed: 7.5
   moveSpeedIncreaseRate: 0.1
 --- !u!4 &781979111
 Transform:
@@ -616,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1083351361}
   - component: {fileID: 1083351362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,8 +695,8 @@ GameObject:
   - component: {fileID: 1140090925}
   - component: {fileID: 1140090929}
   - component: {fileID: 1140090930}
-  - component: {fileID: 1140090926}
   - component: {fileID: 1140090928}
+  - component: {fileID: 1140090931}
   m_Layer: 3
   m_Name: Riding Player
   m_TagString: Untagged
@@ -721,52 +721,6 @@ Transform:
   - {fileID: 1392189297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1140090926
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140090924}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9157a9990ffe8ac478d4c833b4c72ad9, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.28378576}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 1
-  m_Size: {x: 0.8129109, y: 0.66992784}
-  m_EdgeRadius: 0
 --- !u!50 &1140090928
 Rigidbody2D:
   serializedVersion: 5
@@ -793,7 +747,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &1140090929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +779,70 @@ MonoBehaviour:
   lockYAxis: 0
   dashMultiplier: 5
   dashDuration: 0.125
+--- !u!60 &1140090931
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140090924}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.009422034, y: 0.22284493}
+      - {x: -0.42255747, y: 0.10361764}
+      - {x: -0.4311728, y: -0.38607717}
+      - {x: -0.36930913, y: -0.47148144}
+      - {x: -0.3811435, y: -0.7712102}
+      - {x: -0.43463373, y: -0.83246934}
+      - {x: -0.43438622, y: -1.0004222}
+      - {x: -0.30988276, y: -0.99661267}
+      - {x: -0.19687782, y: -0.8139924}
+      - {x: 0.20070861, y: -0.8082371}
+      - {x: 0.30575368, y: -0.99720263}
+      - {x: 0.44731224, y: -0.99966526}
+      - {x: 0.43508846, y: -0.8187931}
+      - {x: 0.37925166, y: -0.76339227}
+      - {x: 0.3797639, y: -0.45660147}
+      - {x: 0.4443566, y: -0.37458873}
+      - {x: 0.43640482, y: 0.08515507}
+  m_UseDelaunayMesh: 1
 --- !u!1001 &1159957094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -943,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1283033196}
   - component: {fileID: 1283033197}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

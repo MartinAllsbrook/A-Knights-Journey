@@ -58,6 +58,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -194,6 +195,10 @@ PrefabInstance:
     - target: {fileID: 6525809949417342657, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_Name
       value: MiniGame End Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525809949417342657, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

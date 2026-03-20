@@ -191,10 +191,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5519533698052644783}
-  - component: {fileID: 8831241814180445028}
+  - component: {fileID: 5318568055421293960}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,8 +216,8 @@ Transform:
   - {fileID: 9221448546192245362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8831241814180445028
-BoxCollider2D:
+--- !u!60 &5318568055421293960
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -246,11 +246,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.46495056}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -260,5 +260,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.75, y: 1.8220866}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0075781345, y: 0.50158393}
+      - {x: -0.31527573, y: 0.4285246}
+      - {x: -0.3153078, y: -0.068069816}
+      - {x: -0.06705809, y: -0.19453743}
+      - {x: -0.06691742, y: -0.44228265}
+      - {x: 0.069387674, y: -0.44360974}
+      - {x: 0.06734955, y: -0.19142237}
+      - {x: 0.31530797, y: -0.07284987}
+      - {x: 0.312886, y: 0.4333052}
+  m_UseDelaunayMesh: 1

@@ -40,11 +40,9 @@ public class RidingPlayer : MinigamePlayer
         InputManager.Riding_OnDash -= OnDash;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        
-        if (collision.CompareTag("Obstacle"))
+        if (collision.collider.CompareTag("Obstacle"))
         {
             RidingController.Instance.PlayerHit();
         }
