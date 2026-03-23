@@ -3653,10 +3653,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Contestant (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8057930017332383487, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24377,10 +24373,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Contestant (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8057930017332383487, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30495,10 +30487,6 @@ PrefabInstance:
     - target: {fileID: 8057930017332383487, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
       propertyPath: m_Name
       value: Contestant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8057930017332383487, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

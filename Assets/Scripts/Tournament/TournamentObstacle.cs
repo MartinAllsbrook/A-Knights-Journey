@@ -28,7 +28,8 @@ public class TournamentObstacle : MonoBehaviour
 
     void OnDestroy()
     {
-        OnDestroyed.Invoke();
+        OnDestroyed?.Invoke();
+        OnDestroyed = null;
         Destroy(gameObject);
     }
 }
