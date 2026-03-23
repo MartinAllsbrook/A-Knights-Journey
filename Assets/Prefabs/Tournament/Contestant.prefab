@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa67cb41ecac244838c17ba9abec97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Contestant
-  speedScaler: 0.5
+  speedScaler: 5
   horseAnimator: {fileID: 6276594207976210119}
   arrowPrefab: {fileID: 1564105973450614401, guid: e6c49d06e78c98841bcbdcfca36a3410, type: 3}
   bowTransform: {fileID: 6018376653182760346}

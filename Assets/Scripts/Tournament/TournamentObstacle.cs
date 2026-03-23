@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ObstacleType
 {
@@ -12,6 +13,7 @@ public class TournamentObstacle : MonoBehaviour
 {
     [SerializeField] float health = 100f;
     [SerializeField] ObstacleType type;
+    [SerializeField] Slider heathBar;
 
     public event Action OnDestroyed = delegate { };
 
@@ -20,6 +22,10 @@ public class TournamentObstacle : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        heathBar.gameObject.SetActive(true);
+        heathBar.value = health / 100f;
+
         if (health <= 0)
         {
             OnDestroy();
