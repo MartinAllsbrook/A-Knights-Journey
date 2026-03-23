@@ -9,6 +9,9 @@ TagManager:
   - Obstacle
   - Game Zone
   - Coin
+  - TournamentTarget
+  - TournamentArcheryObstacle
+  - TournamentSwordplayObstacle
   layers:
   - Default
   - TransparentFX
@@ -48,3 +51,4 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  m_MigratedRenderPipelines: []
