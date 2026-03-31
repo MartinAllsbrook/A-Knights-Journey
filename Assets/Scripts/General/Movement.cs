@@ -7,6 +7,7 @@ class Movement : MonoBehaviour
     [Header("Basic Options")]
     [SerializeField] float reactivity  = 10f;
     [SerializeField] bool lockYAxis = false;
+    [SerializeField] bool lockXAxis = false;
 
     [Header("Dash")]
     [SerializeField] float dashMultiplier = 6f;
@@ -22,14 +23,21 @@ class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
-        if (lockYAxis)
+        if (lockYAxis && lockXAxis)
+            rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        else if (lockYAxis)
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        else if (lockXAxis)
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void SetVelocity(Vector2 velocity)
     {
         if (lockYAxis)
             velocity.y = 0;
+
+        if (lockXAxis)
+            velocity.x = 0;
 
         if (isDashing)
             velocity *= dashMultiplier;

@@ -41,18 +41,18 @@ class RidingController : MinigameController
 
     void Update()
     {
-        int currentChunk = Mathf.FloorToInt((-chunksParent.position.y) / chunkSize);
+        int currentChunk = Mathf.FloorToInt((-chunksParent.position.x) / chunkSize);
         UpdateLoadedChunks(currentChunk);
 
         // Update distance traveled
-        distanceTraveled = -chunksParent.position.y;
+        distanceTraveled = -chunksParent.position.x;
         UpdateScore($"{distanceTraveled:F1}m");
     }
 
     void FixedUpdate()
     {
         moveSpeed += moveSpeedIncreaseRate * Time.fixedDeltaTime;
-        chunksParent.linearVelocity = Vector2.down * moveSpeed;
+        chunksParent.linearVelocity = Vector2.left * moveSpeed;
     }
 
     void UpdateLoadedChunks(int currentChunk)
@@ -86,7 +86,7 @@ class RidingController : MinigameController
     {
         Transform prefab = chunkIndex == 0 ? initialChunkPrefab : chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
         Transform chunk = Instantiate(prefab, chunksParent.transform);
-        chunk.localPosition = new Vector3(0, chunkIndex * chunkSize, 0);
+        chunk.localPosition = new Vector3(chunkIndex * chunkSize, 0, 0);
         return chunk;
     }
 

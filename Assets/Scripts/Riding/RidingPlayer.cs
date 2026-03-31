@@ -6,19 +6,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Movement))]
 public class RidingPlayer : MinigamePlayer
 {
-    [SerializeField] float horizontalMoveSpeed = 5f;
+    [SerializeField] float moveSpeed = 5f;
     [SerializeField] DashSlider dashSlider;
 
     [Header("Dash")]
     [SerializeField] float dashCooldown = 2f;
 
-    float maxHorizontalOffset = 10f;
-    float maxVerticalOffset = 7f;
 
     bool canDash = true;
 
-    Vector2 input;
-    Vector2 offset = Vector2.zero;
+    float input;
     Movement movement;
 
     protected override void Awake()
@@ -51,14 +48,14 @@ public class RidingPlayer : MinigamePlayer
     void LateUpdate()
     {
         Vector2 velocity = Vector2.zero;
-        velocity += Vector2.right * (input.x * horizontalMoveSpeed);
+        velocity += Vector2.up * (input * moveSpeed);
 
         movement.SetVelocity(velocity);
     }
 
     void OnMove(float moveInput)
     {
-        input = new Vector2(moveInput, input.y);
+        input = moveInput;
     }
 
     void OnDash()
