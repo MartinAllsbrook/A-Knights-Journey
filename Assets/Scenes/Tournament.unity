@@ -987,6 +987,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2637780251571487429, guid: 92846db76f7110841b182f16f7832fa5, type: 3}
   m_PrefabInstance: {fileID: 96282145}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &96880395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4412602325176926642, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
+  m_PrefabInstance: {fileID: 2143938086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aa67cb41ecac244838c17ba9abec97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Contestant
 --- !u!1001 &104922410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19369,6 +19380,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2637780251571487429, guid: 92846db76f7110841b182f16f7832fa5, type: 3}
   m_PrefabInstance: {fileID: 585876205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &595744709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595744710}
+  - component: {fileID: 595744711}
+  m_Layer: 0
+  m_Name: TournamentController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595744710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595744709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.40769, y: 1.9507, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595744711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595744709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f13c6d0067e9e4409ded1ae0706e012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentController
+  playerIndex: 0
+  contestants:
+  - {fileID: 1277731887}
+  - {fileID: 96880395}
+  - {fileID: 1546149639}
+  - {fileID: 966861691}
+  levelRange: 2
 --- !u!1001 &599229757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23958,6 +24020,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2637780251571487429, guid: 92846db76f7110841b182f16f7832fa5, type: 3}
   m_PrefabInstance: {fileID: 963225948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &966861691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4412602325176926642, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
+  m_PrefabInstance: {fileID: 1047580893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aa67cb41ecac244838c17ba9abec97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Contestant
 --- !u!1001 &1003239516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25912,6 +25985,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2637780251571487429, guid: 92846db76f7110841b182f16f7832fa5, type: 3}
   m_PrefabInstance: {fileID: 1277003018}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1277731887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4412602325176926642, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
+  m_PrefabInstance: {fileID: 1020104524657797002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aa67cb41ecac244838c17ba9abec97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Contestant
 --- !u!1001 &1279849115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26831,6 +26915,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61e6e389ddf4b724a9545e0d1152c782, type: 3}
+--- !u!114 &1546149639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4412602325176926642, guid: 3e85929cd1101b84491d43b3e275b642, type: 3}
+  m_PrefabInstance: {fileID: 536026575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aa67cb41ecac244838c17ba9abec97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Contestant
 --- !u!1001 &1551955697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30755,3 +30850,4 @@ SceneRoots:
   - {fileID: 2143938086}
   - {fileID: 536026575}
   - {fileID: 1047580893}
+  - {fileID: 595744710}

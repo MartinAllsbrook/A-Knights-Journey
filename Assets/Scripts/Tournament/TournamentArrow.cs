@@ -14,12 +14,8 @@ public class TournamentArrow : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Arrow fired with velocity: " + velocity + " Rigidbody: " + rb);
         rb.linearVelocity = transform.right * velocity;
-    }
-
-    public void Set(float velocity)
-    {
-        this.velocity = velocity;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum SkillType
 {
@@ -11,20 +12,15 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance { get; private set; }
 
-    int archeryLevel = 1;
-    public int ArcheryLevel { get { return archeryLevel; } }
-    int archeryXP = 0;
-    public int ArcheryXP { get { return archeryXP; } }
+    readonly Dictionary<SkillType, SkillData> skills = new Dictionary<SkillType, SkillData>
+    {
+        { SkillType.Archery,   new SkillData() },
+        { SkillType.Swordplay, new SkillData() },
+        { SkillType.Riding,    new SkillData() }
+    };
 
-    int swordplayLevel = 1;
-    public int SwordplayLevel { get { return swordplayLevel; } }
-    int swordplayXP = 0;
-    public int SwordplayXP { get { return swordplayXP; } }
-
-    int ridingLevel = 1;
-    public int RidingLevel { get { return ridingLevel; } }
-    int ridingXP = 0;
-    public int RidingXP { get { return ridingXP; } }
+    public int GetLevel(SkillType skill) => skills[skill].Level;
+    public int GetXP(SkillType skill) => skills[skill].XP;
 
     void Awake()
     {
@@ -41,36 +37,30 @@ public class PlayerStats : MonoBehaviour
 
     public void AddXP(SkillType skill, int xp)
     {
-        switch (skill)
-        {
-            case SkillType.Archery:
-                archeryXP += xp;
-                CheckLevelUp(ref archeryLevel, ref archeryXP);
-                break;
-            case SkillType.Swordplay:
-                swordplayXP += xp;
-                CheckLevelUp(ref swordplayLevel, ref swordplayXP);
-                break;
-            case SkillType.Riding:
-                ridingXP += xp;
-                CheckLevelUp(ref ridingLevel, ref ridingXP);
-                break;
-        }
+        SkillData data = skills[skill];
+        data.XP += xp;
+        CheckLevelUp(data);
     }
 
-    private void CheckLevelUp(ref int level, ref int xp)
+    void CheckLevelUp(SkillData data)
     {
-        int xpForNextLevel = GetXPForNextLevel(level);
-        while (xp >= xpForNextLevel)
+        int xpForNextLevel = GetXPForNextLevel(data.Level);
+        while (data.XP >= xpForNextLevel)
         {
-            xp -= xpForNextLevel;
-            level++;
-            xpForNextLevel = GetXPForNextLevel(level);
+            data.XP -= xpForNextLevel;
+            data.Level++;
+            xpForNextLevel = GetXPForNextLevel(data.Level);
         }
     }
 
-    private int GetXPForNextLevel(int level)
+    int GetXPForNextLevel(int level)
     {
         return 100; // * level;
     }
+}
+
+class SkillData
+{
+    public int Level = 1;
+    public int XP = 0;
 }

@@ -13,9 +13,7 @@ public class Contestant : MonoBehaviour
     [SerializeField] Transform swordTransform;
     [SerializeField] TrailRenderer swordTrail;
 
-    // Stats
-    float minLevel = 1f;
-    float maxLevel = 10f;
+    int maxLevel = 100;
 
     float riding = 5f;
     float archery = 5f;
@@ -27,15 +25,6 @@ public class Contestant : MonoBehaviour
     void Start()
     {
         horseAnimator.SetBool("IsMoving", true);
-        RandomizeStats();
-    }
-
-    void RandomizeStats()
-    {
-
-        riding = Random.Range(minLevel, maxLevel);
-        archery = Random.Range(minLevel, maxLevel);
-        swordplay = Random.Range(minLevel, maxLevel);
     }
 
     void Update()
@@ -71,6 +60,13 @@ public class Contestant : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Set(float riding, float archery, float swordplay, bool isPlayer = false)
+    {
+        this.riding = riding;
+        this.archery = archery;
+        this.swordplay = swordplay;
     }
 
     void Stop()
@@ -124,7 +120,6 @@ public class Contestant : MonoBehaviour
     void FireArrow()
     {
         TournamentArrow newArrow = Instantiate(arrowPrefab, bowTransform.position, Quaternion.identity);
-        newArrow.Set(5f);
     }
 
     #endregion
