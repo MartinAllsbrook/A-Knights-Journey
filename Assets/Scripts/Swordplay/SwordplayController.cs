@@ -14,6 +14,9 @@ class SwordplayController : MinigameController
     [SerializeField] float enemySpeed = 2f;
     [SerializeField] float enemySpeedIncreaseRate = 0.1f;
 
+    [Header("XP Rates")]
+    [SerializeField] float scoreXPRate = 8f;
+
     [Header("References")]
     [SerializeField] Transform[] spiderSpawnPoints;
     [SerializeField] HealthBar healthBar;
@@ -85,6 +88,21 @@ class SwordplayController : MinigameController
 
     void EndGame()
     {
-        EndGame(SkillType.Swordplay, new string[0], new int[0]);
+        // Score
+        int scoreXP = Mathf.RoundToInt(currentScore * scoreXPRate);
+        string scoreText = $"FINAL SCORE: {currentScore}";
+
+        EndGame
+        (
+            SkillType.Swordplay, 
+            new string[] 
+            { 
+                scoreText 
+            }, 
+            new int[] 
+            { 
+                scoreXP 
+            }
+        );
     }
 }

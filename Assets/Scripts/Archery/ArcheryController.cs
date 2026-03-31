@@ -97,7 +97,7 @@ class ArcheryController : MinigameController
     void EndGame()
     {
         // Score
-        int scoreXP = Mathf.RoundToInt(score * scoreXPRate); // 1 XP per point
+        int scoreXP = Mathf.RoundToInt(score * scoreXPRate);
         string scoreText = $"FINAL SCORE: {score}";
 
         // Accuracy

@@ -21,6 +21,9 @@ class RidingController : MinigameController
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float moveSpeedIncreaseRate = 0.05f;
 
+    [Header("XP Rates")]
+    [SerializeField] float scoreXPRate = 0.25f;
+
     public float MoveSpeed => moveSpeed;
 
     readonly Dictionary<int, Transform> loadedChunks = new Dictionary<int, Transform>();
@@ -96,7 +99,7 @@ class RidingController : MinigameController
     {
         // Distance
         string distanceText = $"DISTANCE: {distanceTraveled:F1}m";
-        int distanceXP = Mathf.RoundToInt(distanceTraveled / 10f); // 1 XP per 10 meters
+        int distanceXP = Mathf.RoundToInt(distanceTraveled * scoreXPRate); // XP based on distance
         
         string[] statTexts = new string[] { distanceText };
         int[] statXPs = new int[] { distanceXP };

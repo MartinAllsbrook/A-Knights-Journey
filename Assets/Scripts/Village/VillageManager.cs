@@ -16,12 +16,20 @@ class VillageManager : MonoBehaviour
 
     public void ShowEnterMessage(SceneTag sceneTag)
     {
-        enterMinigamePanel.ShowPanel(GetActionText(sceneTag), () => GameManager.Instance.EnterScene(sceneTag), HideEnterGameMessage);
+        enterMinigamePanel.ShowPanel(GetActionText(sceneTag), () => EnterCallback(sceneTag), CancelCallback);
 
         Time.timeScale = 0f; // Pause the game while the panel is active
     }
 
-    void HideEnterGameMessage()
+    void EnterCallback(SceneTag sceneTag)
+    {
+        enterMinigamePanel.HidePanel();
+        GameManager.Instance.EnterScene(sceneTag);
+
+        Time.timeScale = 1f; // Resume the game when the panel is closed
+    }
+
+    void CancelCallback()
     {
         enterMinigamePanel.HidePanel();
 

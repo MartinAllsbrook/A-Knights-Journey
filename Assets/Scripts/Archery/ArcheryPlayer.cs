@@ -1,11 +1,20 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Movement))] 
 public class ArcheryPlayer : MinigamePlayer
 {
     [SerializeField] float moveSpeed;
     [SerializeField] Arrow arrowPrefab;
     [SerializeField] Transform firePoint;
+    
+    Movement movement;
+    
     float moveInput = 0f;
+
+    void Awake()
+    {
+        movement = GetComponent<Movement>();
+    }
 
     void OnEnable()
     {
@@ -21,7 +30,7 @@ public class ArcheryPlayer : MinigamePlayer
 
     void Update()
     {
-        transform.Translate(Vector3.right * moveInput * moveSpeed * Time.deltaTime);
+        movement.SetVelocity(new Vector2(moveInput * moveSpeed, 0f));
     }
 
     private void HandleMove(float value)
