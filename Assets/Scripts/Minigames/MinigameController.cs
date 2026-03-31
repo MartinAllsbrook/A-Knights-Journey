@@ -52,6 +52,6 @@ public class MinigameController : MonoBehaviour
     void ReturnToVillage()
     {
         Time.timeScale = 1f; // Resume the game
-        GameManager.Instance.EnterVillage();
+        GameManager.Instance.EnterScene(SceneTag.Village);
     }
 }

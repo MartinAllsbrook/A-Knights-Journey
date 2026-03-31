@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Persistent.unity
     guid: 3c27d4d99631d5b4eb34280d94db0203
   - enabled: 1
+    path: Assets/Scenes/Tournament.unity
+    guid: b45e780309f0a4d4aa3c721d127ce147
+  - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 4a904abc3f540ec41b51a0e7accedd79
   - enabled: 1

@@ -14,52 +14,36 @@ class VillageManager : MonoBehaviour
             Instance = this;
     }
 
-    public void ShowEnterGameMessage(GameType gameType)
+    public void ShowEnterMessage(SceneTag sceneTag)
     {
-        string gameName = GetGameName(gameType);
-        enterMinigamePanel.ShowPanel(gameName, () => EnterMinigame(gameType), HideEnterGameMessage);
+        enterMinigamePanel.ShowPanel(GetActionText(sceneTag), () => GameManager.Instance.EnterScene(sceneTag), HideEnterGameMessage);
 
+        Time.timeScale = 0f; // Pause the game while the panel is active
     }
 
     void HideEnterGameMessage()
     {
         enterMinigamePanel.HidePanel();
+
+        Time.timeScale = 1f; // Resume the game when the panel is closed
     }
 
-    void EnterMinigame(GameType gameType)
+    string GetActionText(SceneTag sceneTag)
     {
-        switch (gameType)
+        switch (sceneTag)
         {
-            case GameType.Swordplay:
-                Debug.Log("Entering Swordplay minigame...");
-                GameManager.Instance.EnterSwordplayGame();
-                break;
-            case GameType.Archery:
-                Debug.Log("Entering Archery minigame...");
-                GameManager.Instance.EnterArcheryGame();
-                break;
-            case GameType.Riding:
-                Debug.Log("Entering Riding minigame...");
-                GameManager.Instance.EnterRidingGame();
-                break;
-            default:
-                Debug.LogWarning("Unknown game type: " + gameType);
-                break;
-        }
-    }
-
-    string GetGameName(GameType gameType)
-    {
-        switch (gameType)
-        {
-            case GameType.Swordplay:
-                return "Swordplay";
-            case GameType.Archery:
-                return "Archery";
-            case GameType.Riding:
-                return "Riding";
+            case SceneTag.Swordplay:
+                return "Do you want to enter Swordplay training?";
+            case SceneTag.Archery:
+                return "Do you want to enter Archery training?";
+            case SceneTag.Riding:
+                return "Do you want to enter Riding training?";
+            case SceneTag.Tournament:
+                return "Are you ready to enter the Tournament?";
             default:
                 return "Unknown";
         }
     }
+
+
 }

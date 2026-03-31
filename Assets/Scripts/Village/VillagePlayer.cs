@@ -27,4 +27,26 @@ public class VillagePlayer : MonoBehaviour
         Vector2 velocity = moveInput * moveSpeed;
         movement.SetVelocity(velocity);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "EnterSwordplay":
+                VillageManager.Instance.ShowEnterMessage(SceneTag.Swordplay);
+                break;
+            case "EnterArchery":
+                VillageManager.Instance.ShowEnterMessage(SceneTag.Archery);
+                break;
+            case "EnterRiding":
+                VillageManager.Instance.ShowEnterMessage(SceneTag.Riding);
+                break;
+            case "EnterTournament":
+                VillageManager.Instance.ShowEnterMessage(SceneTag.Tournament);
+                break;
+            default:
+                Debug.Log("Player entered unknown trigger: " + collision.tag);
+                break;
+        }
+    }
 }

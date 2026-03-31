@@ -1,16 +1,29 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum SceneTag
+{
+    Village,
+    Swordplay,
+    Archery,
+    Riding,
+    Tournament
+}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Managed Scene Names")]
-    [SerializeField] private string archerySceneName = "ArcheryGame";
-    [SerializeField] private string swordplaySceneName = "SwordplayGame";
-    [SerializeField] private string ridingSceneName = "RidingGame";
-    [SerializeField] private string villageSceneName = "Village";
+    private Dictionary<SceneTag, string> sceneMap = new Dictionary<SceneTag, string>
+    {
+        { SceneTag.Archery, "ArcheryGame" },
+        { SceneTag.Swordplay, "SwordplayGame" },
+        { SceneTag.Riding, "RidingGame" },
+        { SceneTag.Village, "Village" },
+        { SceneTag.Tournament, "Tournament" }
+    };
 
     private string currentGameplayScene;
     private bool isTransitioning;
@@ -32,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(currentGameplayScene))
         {
-            EnterVillage();
+            EnterScene(SceneTag.Village);
         }
     }
 
@@ -43,28 +56,10 @@ public class GameManager : MonoBehaviour
         currentGameplayScene = sceneName;
     }
 
-    public void EnterVillage()
+    public void EnterScene(SceneTag key)
     {
-        if (isTransitioning) return;
-        SwitchScene(villageSceneName);
-    }
-
-    public void EnterArcheryGame()
-    {
-        if (isTransitioning) return;
-        SwitchScene(archerySceneName);
-    }
-
-    public void EnterSwordplayGame()
-    {
-        if (isTransitioning) return;
-        SwitchScene(swordplaySceneName);
-    }
-
-    public void EnterRidingGame()
-    {
-        if (isTransitioning) return;
-        SwitchScene(ridingSceneName);
+        if (isTransitioning || !sceneMap.ContainsKey(key)) return;
+        SwitchScene(sceneMap[key]);
     }
 
     public void SwitchScene(string sceneName)
