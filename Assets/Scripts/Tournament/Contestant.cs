@@ -3,29 +3,33 @@ using UnityEngine;
 
 public class Contestant : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] float speedScaler = 5f;
     [SerializeField] float swordplayScaler = 5f;
     [SerializeField] float archeryScaler = 5f;
+    [SerializeField] LayerMask obstacleLayer;
 
+    [Header("References")]
     [SerializeField] Animator horseAnimator;
     [SerializeField] TournamentArrow arrowPrefab;
     [SerializeField] Transform bowTransform;
     [SerializeField] Transform swordTransform;
     [SerializeField] TrailRenderer swordTrail;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
-    [SerializeField] LayerMask obstacleLayer;
-
-    int maxLevel = 100;
-
+    // Stats
     float riding = 5f;
     float archery = 5f;
     float swordplay = 5f;
 
+    // State
     bool stopped = false;
     bool finished = false;
 
+    // Public 
+    public Sprite contestantSprite;
     public bool dnf = false;
-
+    public bool isPlayer = false;
 
     void Start()
     {
@@ -67,11 +71,16 @@ public class Contestant : MonoBehaviour
         }
     }
 
-    public void Set(float riding, float archery, float swordplay, bool isPlayer = false)
+    public void Set(float riding, float archery, float swordplay, Sprite contestantSprite, bool isPlayer = false)
     {
         this.riding = riding;
         this.archery = archery;
         this.swordplay = swordplay;
+        
+        this.contestantSprite = contestantSprite;
+        spriteRenderer.sprite = contestantSprite;
+
+        this.isPlayer = isPlayer;
     }
 
     void Stop()

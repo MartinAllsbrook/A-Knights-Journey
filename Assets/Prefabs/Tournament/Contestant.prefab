@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4195525022746584018}
   - component: {fileID: 2745260641390492198}
   m_Layer: 0
-  m_Name: dungeon_tilemap_packed_96
+  m_Name: Contestant Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,14 +268,18 @@ MonoBehaviour:
   speedScaler: 0.15
   swordplayScaler: 0.15
   archeryScaler: 0.15
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
   horseAnimator: {fileID: 6276594207976210119}
   arrowPrefab: {fileID: 1564105973450614401, guid: e6c49d06e78c98841bcbdcfca36a3410, type: 3}
   bowTransform: {fileID: 6018376653182760346}
   swordTransform: {fileID: 5374544108041841459}
   swordTrail: {fileID: 5558375866437628942}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  spriteRenderer: {fileID: 2745260641390492198}
+  contestantSprite: {fileID: 0}
+  dnf: 0
+  isPlayer: 0
 --- !u!95 &6276594207976210119
 Animator:
   serializedVersion: 7

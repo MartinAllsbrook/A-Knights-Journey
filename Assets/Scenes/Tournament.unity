@@ -3653,13 +3653,14 @@ GameObject:
   - component: {fileID: 467340079}
   - component: {fileID: 467340081}
   - component: {fileID: 467340080}
+  - component: {fileID: 467340082}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &467340079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3721,6 +3722,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467340078}
   m_CullTransparentMesh: 1
+--- !u!114 &467340082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467340078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb96a9188fbb1d4faa43f87e3c442fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentScoreboard
+  results:
+  - {fileID: 7059945284452732345}
+  - {fileID: 1697970828}
+  - {fileID: 593566729596762342}
+  - {fileID: 1296082504}
+  continueButton: {fileID: 1341690598}
+  titleText: {fileID: 1953017268}
 --- !u!1001 &467384048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19965,13 +19985,24 @@ MonoBehaviour:
   levelRange: 3
   targetLevel: 10
   countdownTime: 15
+  contestantSprites:
+  - {fileID: -811530650, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -1051822788, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: 207207369, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: 1173497336, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: 1497854829, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -1058634094, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -331493869, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -1208532634, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -44107362, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
+  - {fileID: -832384217, guid: a8c0b33d6e7933b44b2b5cb87d89427a, type: 3}
   contestants:
   - {fileID: 1277731887}
   - {fileID: 96880395}
   - {fileID: 1546149639}
   - {fileID: 966861691}
   countdownText: {fileID: 181449786}
-  scoreBoard: {fileID: 0}
+  scoreboard: {fileID: 467340082}
 --- !u!1001 &599229757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27452,6 +27483,10 @@ PrefabInstance:
     - target: {fileID: 6777495687954454988, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 1836663100, guid: 4c9cfef7e3161454bb5c33ed1178f76a, type: 3}
+    - target: {fileID: 6777495687954454988, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_Pivot.x
@@ -27467,7 +27502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.x
@@ -27475,11 +27510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 401.5
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.y
@@ -27515,11 +27550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200.75
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -452.5558
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -27542,8 +27577,7 @@ PrefabInstance:
       value: 4th
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5421544619886733939, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
@@ -27552,6 +27586,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
   m_PrefabInstance: {fileID: 1296082502}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1296082504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5437402848079220188, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+  m_PrefabInstance: {fileID: 1296082502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608d10c3a31242a43b48504a7c1f33b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentResult
 --- !u!1001 &1316507861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29695,7 +29740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.x
@@ -29703,11 +29748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 401.5
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.y
@@ -29743,11 +29788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200.75
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -202.55579
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -29779,6 +29824,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
   m_PrefabInstance: {fileID: 1697970826}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697970828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5437402848079220188, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+  m_PrefabInstance: {fileID: 1697970826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608d10c3a31242a43b48504a7c1f33b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentResult
 --- !u!4 &1698407553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2637780251571487429, guid: 92846db76f7110841b182f16f7832fa5, type: 3}
@@ -33322,7 +33378,7 @@ PrefabInstance:
     - target: {fileID: 6777495687954454988, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -583527668, guid: 6ab004274daf6314b8f63efc2aaa9f66, type: 3}
+      objectReference: {fileID: 577351133, guid: 4c9cfef7e3161454bb5c33ed1178f76a, type: 3}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -33337,7 +33393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.x
@@ -33345,11 +33401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 401.5
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.y
@@ -33385,11 +33441,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200.75
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -327.5558
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33421,6 +33477,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
   m_PrefabInstance: {fileID: 593566729596762340}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &593566729596762342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5437402848079220188, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+  m_PrefabInstance: {fileID: 593566729596762340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608d10c3a31242a43b48504a7c1f33b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentResult
 --- !u!1001 &1020104524657797002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33561,7 +33628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.x
@@ -33569,11 +33636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 401.5
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_SizeDelta.y
@@ -33609,11 +33676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200.75
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -77.555786
       objectReference: {fileID: 0}
     - target: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33641,6 +33708,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7014261417671316080, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
   m_PrefabInstance: {fileID: 7059945284452732343}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7059945284452732345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5437402848079220188, guid: 8e1841d0f8dbe4b48a527f3372c1e883, type: 3}
+  m_PrefabInstance: {fileID: 7059945284452732343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608d10c3a31242a43b48504a7c1f33b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TournamentResult
 --- !u!1001 &7559345404597838126
 PrefabInstance:
   m_ObjectHideFlags: 0

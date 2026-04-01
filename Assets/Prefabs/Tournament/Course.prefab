@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tournament Target (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1267325690153242131, guid: 1425ef1144b2d14449a77572020a65a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3725395496057962043, guid: 1425ef1144b2d14449a77572020a65a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.23
@@ -109,6 +113,10 @@ PrefabInstance:
     - target: {fileID: 4705377340673805265, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
       propertyPath: m_Name
       value: Swordplay Obstacle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705377340673805265, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6909722930120327090, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -172,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordplay Obstacle (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4705377340673805265, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6909722930120327090, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.43
@@ -234,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tournament Target
       objectReference: {fileID: 0}
+    - target: {fileID: 1267325690153242131, guid: 1425ef1144b2d14449a77572020a65a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3725395496057962043, guid: 1425ef1144b2d14449a77572020a65a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -295,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 4705377340673805265, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
       propertyPath: m_Name
       value: Swordplay Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705377340673805265, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6909722930120327090, guid: 8b7810de7eaacac489366ec532aa563e, type: 3}
       propertyPath: m_LocalPosition.x

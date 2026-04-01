@@ -8,10 +8,9 @@ public class TournamentController : MonoBehaviour
 
     [SerializeField] int playerIndex = 0;
     [SerializeField] int levelRange = 2;
-
     [SerializeField] int targetLevel = 10;
-
     [SerializeField] float countdownTime = 15f;
+    [SerializeField] Sprite[] contestantSprites;
 
     [Header("References")]
     [SerializeField] Contestant[] contestants;
@@ -47,14 +46,17 @@ public class TournamentController : MonoBehaviour
                 float archery = stats.GetLevel(SkillType.Archery);
                 float swordplay = stats.GetLevel(SkillType.Swordplay);
                 float riding = stats.GetLevel(SkillType.Riding);
-                Debug.Log($"Player Stats - Archery: {archery}, Swordplay: {swordplay}, Riding: {riding}");
-                contestants[i].Set(riding, archery, swordplay, true); // Set player stats here
+                Sprite contestantSprite = contestantSprites[Random.Range(0, contestantSprites.Length)];
+
+                contestants[i].Set(riding, archery, swordplay, contestantSprite, true); // Set player stats here
             }
             else
             {       
                 int minLevel = Mathf.Max(1, targetLevel - levelRange);
                 int maxLevel = targetLevel + levelRange;
-                contestants[i].Set(Random.Range(minLevel, maxLevel), Random.Range(minLevel, maxLevel), Random.Range(minLevel, maxLevel)); // Randomize AI stats
+                Sprite contestantSprite = contestantSprites[Random.Range(0, contestantSprites.Length)];
+                
+                contestants[i].Set(Random.Range(minLevel, maxLevel), Random.Range(minLevel, maxLevel), Random.Range(minLevel, maxLevel), contestantSprite); // Randomize AI stats
             }
         }
     }
@@ -67,9 +69,9 @@ public class TournamentController : MonoBehaviour
             countdownText.text = $"Time Remaining: {Mathf.Ceil(countdownRemaining)}s";
             if (countdownRemaining <= 0 && !tournamentFinished)
             {
-                foreach (var contestant in contestants)
+                if (!tournamentFinished)
                 {
-                    contestant.Finished();
+                    FinishTournament();
                 }
             }
         }
@@ -118,6 +120,7 @@ public class TournamentController : MonoBehaviour
         }
 
         // Update the scoreboard with the final results
+        scoreboard.gameObject.SetActive(true);
         scoreboard.SetResults(finishedContestants.ToArray());
     }
 }
