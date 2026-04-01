@@ -16,6 +16,7 @@ TagManager:
   - EnterArchery
   - EnterRiding
   - EnterTournament
+  - Finish Line
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Water
   - UI
   - Player Boundary
-  - 
+  - Obstacle
   - 
   - 
   - 

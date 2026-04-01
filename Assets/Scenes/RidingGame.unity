@@ -603,7 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140090925}
-  - component: {fileID: 1140090929}
+  - component: {fileID: 1140090933}
   - component: {fileID: 1140090930}
   - component: {fileID: 1140090928}
   - component: {fileID: 1140090931}
@@ -659,21 +659,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &1140090929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140090924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbd0f83f2e3bd74f8573487a7786217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rider
-  moveSpeed: 5
-  dashSlider: {fileID: 1504621349}
-  dashCooldown: 2
 --- !u!114 &1140090930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +744,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1140090933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140090924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79053bca3a008af4e98575bf145a886d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RidingPlayer
+  moveSpeed: 5
+  dashSlider: {fileID: 1504621349}
+  dashCooldown: 2
 --- !u!1001 &1159957094
 PrefabInstance:
   m_ObjectHideFlags: 0

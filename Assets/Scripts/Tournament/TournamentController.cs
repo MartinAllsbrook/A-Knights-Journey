@@ -1,12 +1,41 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TournamentController : MonoBehaviour
 {
+    public static TournamentController Instance { get; private set; }
+
     [SerializeField] int playerIndex = 0;
-    [SerializeField] Contestant[] contestants;
     [SerializeField] int levelRange = 2;
 
-    int targetLevel = 10;
+    [SerializeField] int targetLevel = 10;
+
+    [SerializeField] float countdownTime = 15f;
+
+    [Header("References")]
+    [SerializeField] Contestant[] contestants;
+    [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] TournamentScoreboard scoreboard;
+
+    float countdownRemaining;
+    bool countdownStarted = false;
+    int contestantsFinished = 0;
+    bool tournamentFinished = false;
+
+    List<Contestant> finishedContestants = new List<Contestant>();
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -19,7 +48,7 @@ public class TournamentController : MonoBehaviour
                 float swordplay = stats.GetLevel(SkillType.Swordplay);
                 float riding = stats.GetLevel(SkillType.Riding);
                 Debug.Log($"Player Stats - Archery: {archery}, Swordplay: {swordplay}, Riding: {riding}");
-                contestants[i].Set(archery, swordplay, riding, true); // Set player stats here
+                contestants[i].Set(riding, archery, swordplay, true); // Set player stats here
             }
             else
             {       
@@ -30,8 +59,65 @@ public class TournamentController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (countdownStarted)
+        {
+            countdownRemaining -= Time.deltaTime;
+            countdownText.text = $"Time Remaining: {Mathf.Ceil(countdownRemaining)}s";
+            if (countdownRemaining <= 0 && !tournamentFinished)
+            {
+                foreach (var contestant in contestants)
+                {
+                    contestant.Finished();
+                }
+            }
+        }
+    }
+
     public void SetTargetLevel(int level)
     {
         targetLevel = level;
+    }
+
+    public void ContestantFinished(Contestant contestant)
+    {
+        contestantsFinished++;
+        finishedContestants.Add(contestant);
+
+        if (contestantsFinished == 1)
+        {
+            StartCountdown();
+        }
+        if (contestantsFinished >= contestants.Length)
+        {
+            FinishTournament();
+        }
+    }
+
+    void StartCountdown()
+    {
+        countdownRemaining = countdownTime;
+        countdownStarted = true;
+        countdownText.gameObject.SetActive(true);
+        // Implement countdown logic here (e.g., show UI, play sound, etc.)
+        Debug.Log("First contestant finished! Starting countdown...");
+    }
+
+    void FinishTournament()
+    {
+        tournamentFinished = true;
+
+        foreach (var contestant in contestants)
+        {
+            if (!finishedContestants.Contains(contestant))
+            {
+                contestant.dnf = true; // Mark as DNF
+                finishedContestants.Add(contestant); // Add to finished list for scoreboard
+            }
+        }
+
+        // Update the scoreboard with the final results
+        scoreboard.SetResults(finishedContestants.ToArray());
     }
 }

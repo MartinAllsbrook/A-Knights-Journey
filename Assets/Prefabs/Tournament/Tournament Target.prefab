@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7770197236268586634}
   - component: {fileID: 5930218518250835334}
   - component: {fileID: 7640205271412069556}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tournament Target
   m_TagString: TournamentArcheryObstacle
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 2766480323852085357}
   - component: {fileID: 294372042446066793}
   - component: {fileID: 2248063611286480570}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 2779351972626655534}
   - component: {fileID: 3681177229535551478}
   - component: {fileID: 8571308009382877393}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4930753898455114506}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2386795333258863063}
   - component: {fileID: 5412392784630015828}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 6075366194065650350}
   - component: {fileID: 6734035692557141715}
   - component: {fileID: 8927656847087702794}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

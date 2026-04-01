@@ -13,6 +13,8 @@ public class Contestant : MonoBehaviour
     [SerializeField] Transform swordTransform;
     [SerializeField] TrailRenderer swordTrail;
 
+    [SerializeField] LayerMask obstacleLayer;
+
     int maxLevel = 100;
 
     float riding = 5f;
@@ -20,6 +22,9 @@ public class Contestant : MonoBehaviour
     float swordplay = 5f;
 
     bool stopped = false;
+    bool finished = false;
+
+    public bool dnf = false;
 
 
     void Start()
@@ -32,10 +37,10 @@ public class Contestant : MonoBehaviour
         if (stopped)
             return;
 
-        transform.Translate(Time.deltaTime * (riding / maxLevel) * speedScaler * Vector3.right);
+        transform.Translate(Time.deltaTime * riding * speedScaler * Vector3.right);
 
         // Check for obstacles in front
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 4f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 4f, obstacleLayer);
 
         if (hit.collider != null)
         {
@@ -81,6 +86,32 @@ public class Contestant : MonoBehaviour
         horseAnimator.SetBool("IsMoving", true);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Finish Line"))
+        {
+            Debug.Log($"{gameObject.name} finished!");
+            Finished();
+        }
+    }
+
+    public void Finished()
+    {
+        if (finished)
+            return;
+
+        finished = true;
+        TournamentController.Instance.ContestantFinished(this);
+        StartCoroutine(StopInAMoment(2f));
+    }
+
+    IEnumerator StopInAMoment(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StopAllCoroutines();
+        Stop();
+    }
+
     #region Archery Obstacle
 
     IEnumerator DealWithArcheryObstacle(TournamentObstacle target)
@@ -90,7 +121,7 @@ public class Contestant : MonoBehaviour
             ExitArcheryState();
         };
 
-        float arrowFireRate = archeryScaler - (archeryScaler * (archery / maxLevel));
+        float arrowFireRate = 1 / (archeryScaler * archery);
 
         EnterArcheryState();
 
@@ -134,7 +165,7 @@ public class Contestant : MonoBehaviour
         };
 
         float attackDuration = 0.4f;
-        float attackRate = swordplayScaler - (swordplayScaler * (swordplay / maxLevel)) - attackDuration;
+        float attackRate = 1 / (swordplayScaler * swordplay) - attackDuration;
         if (attackRate < 0f)
             attackRate = 0f;
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168125504996618307}
   - component: {fileID: 4951683027486657448}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7139528148263052763}
   - component: {fileID: 137703718214141398}
   - component: {fileID: 2079336492559146712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Swordplay Obstacle
   m_TagString: TournamentSwordplayObstacle
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7844682497791819751}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 3592269501229216396}
   - component: {fileID: 6762285510509712018}
   - component: {fileID: 1799901766713733215}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 2320021436788105302}
   - component: {fileID: 8406520846399254001}
   - component: {fileID: 4391582392197797491}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 5571654408449082784}
   - component: {fileID: 4104615598972261847}
   - component: {fileID: 196262118610723689}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
