@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProceduralChunk
   chunkWidth: 100
   chunkHeight: 50
-  obstacleDensity: 5
+  obstacleDensity: 3
   obstacleTilemap: {fileID: 1160988792641023519}
   obstacleTile: {fileID: 11400000, guid: d280fa26e2a872449bd98c5d7b856f4e, type: 2}
 --- !u!1 &7994603446163301875
