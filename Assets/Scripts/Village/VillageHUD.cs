@@ -28,9 +28,9 @@ public class VillageHUD : MonoBehaviour
     public void UpdateStatSliders()
     {
         PlayerStats stats = PlayerStats.Instance;
-        archeryStatSlider.SetStat("Archery", stats.GetLevel(SkillType.Archery), stats.GetXP(SkillType.Archery), 100);
-        swordplayStatSlider.SetStat("Swordplay", stats.GetLevel(SkillType.Swordplay), stats.GetXP(SkillType.Swordplay), 100);
-        ridingStatSlider.SetStat("Riding", stats.GetLevel(SkillType.Riding), stats.GetXP(SkillType.Riding), 100);
+        archeryStatSlider.SetStat("Archery", stats.GetSkill(SkillType.Archery));
+        swordplayStatSlider.SetStat("Swordplay", stats.GetSkill(SkillType.Swordplay));
+        ridingStatSlider.SetStat("Riding", stats.GetSkill(SkillType.Riding));
     }
 
     public void ShowEnterMinigamePanel(string minigameName, System.Action enterCallback, System.Action cancelCallback)

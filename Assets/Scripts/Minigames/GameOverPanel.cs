@@ -5,36 +5,43 @@ using UnityEngine.UI;
 
 class GameOverPanel : MonoBehaviour
 {
-    [Header("Prefabs")]
-    [SerializeField] GameOverPanelRow statRowPrefab;
-
     [Header("UI References")]
-    [SerializeField] RectTransform statsContainer;
-    [SerializeField] TextMeshProUGUI totalXPText;
     [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI resultsText;
+    [SerializeField] Button retryButton;
     [SerializeField] Button continueButton; 
+    [SerializeField] StatSlider statSlider;
 
-    public void ShowGameOver(string title, int totalXP, string[] statTexts, int[] xpGained, Action continueCallback)
+    public void ShowGameOver(SkillType skill, int score, int coins, int xp, Action continueCallback, Action retryCallback)
     {
-        titleText.text = title;
-        totalXPText.text = "+" + totalXP + " XP";
-        PopulateStats(statTexts, xpGained);
+        // Text
+        titleText.text = $"{skill} Training Over!";
+        resultsText.text = $"Score: {score}\n+{coins} Coins\n+{xp} XP";
 
-        continueButton.onClick.RemoveAllListeners();
+        // Buttons
+        ClearListeners();
+
+        retryButton.onClick.AddListener(() => {
+            ClearListeners();
+            retryCallback?.Invoke();
+            gameObject.SetActive(false);
+        });
+
         continueButton.onClick.AddListener(() => {
+            ClearListeners();
             continueCallback?.Invoke();
             gameObject.SetActive(false);
         });
+
+        statSlider.SetStat(skill.ToString(), PlayerStats.Instance.GetSkill(skill));
         
+        // Show the panel
         gameObject.SetActive(true);
     }
 
-    void PopulateStats(string[] statTexts, int[] xpGained)
+    void ClearListeners()
     {
-        for (int i = 0; i < statTexts.Length; i++)
-        {
-            GameOverPanelRow newRow = Instantiate(statRowPrefab, statsContainer);
-            newRow.Set(statTexts[i], xpGained[i]);
-        }
+        retryButton.onClick.RemoveAllListeners();
+        continueButton.onClick.RemoveAllListeners();
     }
 }

@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
         { SkillType.Riding,    new SkillData() }
     };
 
+    public SkillData GetSkill(SkillType skill) => skills[skill];
     public int GetLevel(SkillType skill) => skills[skill].Level;
     public int GetXP(SkillType skill) => skills[skill].XP;
 
@@ -59,7 +60,7 @@ public class PlayerStats : MonoBehaviour
     }
 }
 
-class SkillData
+public class SkillData
 {
     public int Level = 1;
     public int XP = 0;

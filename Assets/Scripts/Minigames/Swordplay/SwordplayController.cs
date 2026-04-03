@@ -89,20 +89,9 @@ class SwordplayController : MinigameController
     void EndGame()
     {
         // Score
-        int scoreXP = Mathf.RoundToInt(currentScore * scoreXPRate);
+        int xp = Mathf.RoundToInt(currentScore * scoreXPRate);
         string scoreText = $"FINAL SCORE: {currentScore}";
 
-        EndGame
-        (
-            SkillType.Swordplay, 
-            new string[] 
-            { 
-                scoreText 
-            }, 
-            new int[] 
-            { 
-                scoreXP 
-            }
-        );
+        EndGame(SkillType.Swordplay, currentScore, 69, xp);
     }
 }

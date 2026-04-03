@@ -97,26 +97,10 @@ class ArcheryController : MinigameController
     void EndGame()
     {
         // Score
-        int scoreXP = Mathf.RoundToInt(score * scoreXPRate);
-        string scoreText = $"FINAL SCORE: {score}";
+        int xp = Mathf.RoundToInt(score * scoreXPRate);
 
-        // Accuracy
-        float accuracy = shotsTaken > 0 ? (float)shotsHit / shotsTaken : 0f;
-        int accuracyXP = Mathf.RoundToInt(accuracy * accuracyXPRate);
-        string accuracyText = $"ACCURACY: {(accuracy * 100f):F1}%";
 
-        string[] statTexts = new string[]
-        {
-            scoreText,
-            accuracyText,
-        };
-        int[] xpGained = new int[]
-        {
-            scoreXP,
-            accuracyXP,
-        };
-
-        EndGame(SkillType.Archery, statTexts, xpGained);
+        EndGame(SkillType.Archery, score, 69, xp);
     }
 
     public void TallyShot()

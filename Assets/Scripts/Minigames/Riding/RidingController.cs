@@ -98,12 +98,9 @@ class RidingController : MinigameController
     void EndGame()
     {
         // Distance
-        string distanceText = $"DISTANCE: {distanceTraveled:F1}m";
-        int distanceXP = Mathf.RoundToInt(distanceTraveled * scoreXPRate); // XP based on distance
+        int xp = Mathf.RoundToInt(distanceTraveled * scoreXPRate); // XP based on distance
         
-        string[] statTexts = new string[] { distanceText };
-        int[] statXPs = new int[] { distanceXP };
 
-        EndGame(SkillType.Riding, statTexts, statXPs);
+        EndGame(SkillType.Riding, Mathf.FloorToInt(distanceTraveled), 69, xp);
     }
 }

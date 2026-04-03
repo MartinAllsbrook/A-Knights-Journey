@@ -17,7 +17,7 @@ public class MinigameController : MonoBehaviour
         gameOver = false;
     }
 
-    protected void EndGame(SkillType skill, string[] statTexts, int[] xpGained)
+    protected void EndGame(SkillType skill, int score, int coins, int xp)
     {
         StopAllCoroutines();
 
@@ -27,15 +27,9 @@ public class MinigameController : MonoBehaviour
 
         string titleText = $"{gameTitle} Training Over!";
 
-        int totalXP = 0;
-        foreach (int xp in xpGained)
-        {
-            totalXP += xp;
-        }
+        PlayerStats.Instance.AddXP(skill, xp);
 
-        PlayerStats.Instance.AddXP(skill, totalXP);
-
-        gameOverPanel.ShowGameOver(titleText, totalXP, statTexts, xpGained, ReturnToVillage);
+        gameOverPanel.ShowGameOver(skill, score, coins, xp, ReturnToVillage, RetryGame);
     }
 
     protected void UpdateScore(string score)
@@ -53,5 +47,12 @@ public class MinigameController : MonoBehaviour
     {
         Time.timeScale = 1f; // Resume the game
         GameManager.Instance.EnterScene(SceneTag.Village);
+    }
+
+    //TODO: Implement retry functionality
+    void RetryGame()
+    {
+        // Time.timeScale = 1f; // Resume the game
+        // GameManager.Instance.ReloadCurrentScene();
     }
 }

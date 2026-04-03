@@ -16,4 +16,9 @@ public class StatSlider : MonoBehaviour
         statXPText.text = $"{currentXP} / {xpForNextLevel}";
         statProgressSlider.value = (float)currentXP / xpForNextLevel;
     }
+
+    public void SetStat(string name, SkillData skillData)
+    {
+        SetStat(name, skillData.Level, skillData.XP, 100); // Assuming 100 XP per level for now
+    }
 }

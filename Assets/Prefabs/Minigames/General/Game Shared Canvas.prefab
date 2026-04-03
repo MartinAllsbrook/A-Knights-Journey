@@ -79,7 +79,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2560, y: 1440}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -138,11 +138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479648085438559500, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1060.4751
+      value: 1300
       objectReference: {fileID: 0}
     - target: {fileID: 479648085438559500, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 701.682
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 479648085438559500, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,13 +192,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5947475623409404149, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947475623409404149, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6525809949417342657, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_Name
       value: MiniGame End Panel
       objectReference: {fileID: 0}
     - target: {fileID: 6525809949417342657, guid: 30085d5704c069f4293015bcb2709f34, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
