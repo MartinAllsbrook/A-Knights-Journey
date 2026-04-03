@@ -7450,7 +7450,7 @@ GameObject:
   - component: {fileID: 1143936900}
   - component: {fileID: 1143936899}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: Swordplay Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7471,6 +7471,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 793251572}
   scoreboard: {fileID: 793251573}
   gameTitle: Swordplay
+  sceneTag: 1
   startingLives: 3
   spawnInterval: 2
   spawnIntervalDecreaseRate: 0.025

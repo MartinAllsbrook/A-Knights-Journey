@@ -6,7 +6,7 @@ public class MinigamePlayer : MonoBehaviour
 
     protected virtual void Awake()
     {
-        minigameController = FindFirstObjectByType<MinigameController>();
+        minigameController = FindAnyObjectByType<MinigameController>();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

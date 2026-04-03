@@ -1122,6 +1122,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1152033265}
   scoreboard: {fileID: 7744789790345959724}
   gameTitle: Archery
+  sceneTag: 2
   staticTargets:
   - {fileID: 1056865324}
   - {fileID: 1497249902}

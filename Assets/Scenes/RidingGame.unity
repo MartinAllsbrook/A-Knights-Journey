@@ -458,6 +458,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1159957095}
   scoreboard: {fileID: 1695959173}
   gameTitle: Riding
+  sceneTag: 3
   chunksParent: {fileID: 556866908}
   initialChunkPrefab: {fileID: 451645292234427816, guid: 4c55b5c44f1f6024696e10ad778f0ad1, type: 3}
   chunkPrefabs:
