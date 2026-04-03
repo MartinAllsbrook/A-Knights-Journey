@@ -531,6 +531,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7282981508909079839, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
   m_PrefabInstance: {fileID: 68143148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &68143150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8681559849277941076, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
+  m_PrefabInstance: {fileID: 68143148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57d3c038e2144e48a32531b5aa73785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatSlider
 --- !u!1 &73398679
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +581,7 @@ Transform:
   m_GameObject: {fileID: 73398679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1920, y: 1080, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45875,6 +45886,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7282981508909079839, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
   m_PrefabInstance: {fileID: 1448014569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1448014571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8681559849277941076, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
+  m_PrefabInstance: {fileID: 1448014569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57d3c038e2144e48a32531b5aa73785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatSlider
 --- !u!1 &1467928035
 GameObject:
   m_ObjectHideFlags: 0
@@ -46072,8 +46094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VillageHUD
   enterMinigamePanel: {fileID: 280272222}
   archeryStatSlider: {fileID: 1588363669}
-  swordplayStatSlider: {fileID: 0}
-  ridingStatSlider: {fileID: 0}
+  swordplayStatSlider: {fileID: 68143150}
+  ridingStatSlider: {fileID: 1448014571}
 --- !u!114 &1588363669 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8681559849277941076, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
@@ -46694,22 +46716,6 @@ PrefabInstance:
     - target: {fileID: 173674295443981025, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061906262235200184, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.8235295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061906262235200184, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.9450981
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061906262235200184, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061906262235200184, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4292014591
       objectReference: {fileID: 0}
     - target: {fileID: 2103378035007952982, guid: 9b5c02c4df93d6540a0c24fc9bc1a2a6, type: 3}
       propertyPath: m_Name
