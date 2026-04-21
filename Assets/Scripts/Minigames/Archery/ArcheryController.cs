@@ -84,7 +84,7 @@ class ArcheryController : MinigameController
         var available = System.Array.FindAll(staticTargets, t => !t.IsDeployed);
         if (available.Length == 0) return;
 
-        available[Random.Range(0, available.Length)].DeployTarget();
+        available[Random.Range(0, available.Length)].DeployTarget(10f); // Target stays up for 10 seconds if not hit
     }
 
     public void AddScore(int points)

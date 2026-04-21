@@ -14,13 +14,18 @@ public class Target : MonoBehaviour
     bool isDeployed = false;
     public bool IsDeployed => isDeployed;
 
-    public void DeployTarget()
+    public void DeployTarget(float lifetime = 0f)
     {
         colliderObject.enabled = true;
         ArcheryController.Instance.TallyTarget();
         isDeployed = true;
         StopAllCoroutines();
         StartCoroutine(ShowTargetRoutine());
+
+        if (lifetime > 0f)
+        {
+            StartCoroutine(AutoRetractRoutine(lifetime));
+        }
     }
 
     public void RetractTarget()
@@ -29,6 +34,12 @@ public class Target : MonoBehaviour
         isDeployed = false;
         StopAllCoroutines();
         StartCoroutine(RetractTargetRoutine());
+    }
+
+    IEnumerator AutoRetractRoutine(float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
+        RetractTarget();
     }
 
     IEnumerator ShowTargetRoutine()

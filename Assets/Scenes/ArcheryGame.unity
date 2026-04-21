@@ -1137,7 +1137,7 @@ MonoBehaviour:
   timerText: {fileID: 1780350196}
   railLine: {fileID: 1244652370}
   spawnInterval: 2
-  gameDuration: 10
+  gameDuration: 60
   accuracyXPRate: 100
   scoreXPRate: 4
 --- !u!4 &1534240703

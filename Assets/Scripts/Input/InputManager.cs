@@ -12,7 +12,8 @@ class InputManager : MonoBehaviour
 
     // Archery
     public static event Action<float> Archery_OnMove = delegate {};
-    public static event Action Archery_OnFire = delegate {};
+    public static event Action Archery_OnFireDown = delegate {};
+    public static event Action Archery_OnFireUp = delegate {};
 
     // Swordplay
     public static event Action Swordplay_Attack = delegate {};
@@ -59,7 +60,8 @@ class InputManager : MonoBehaviour
         controls.Archery.Move.performed += ctx => Archery_OnMove.Invoke(ctx.ReadValue<float>());
         controls.Archery.Move.canceled += ctx => Archery_OnMove.Invoke(0f);
 
-        controls.Archery.Fire.performed += ctx => Archery_OnFire.Invoke();
+        controls.Archery.Fire.performed += ctx => Archery_OnFireDown.Invoke();
+        controls.Archery.Fire.canceled += ctx => Archery_OnFireUp.Invoke();
 
         // Swordplay
         controls.Swordplay.Attack.performed += ctx => Swordplay_Attack.Invoke();
