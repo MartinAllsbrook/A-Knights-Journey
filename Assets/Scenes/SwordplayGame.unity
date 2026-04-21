@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9f3c86598f1924d8a4c5ccb6b30ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordplayPlayerController
+  playerSprite: {fileID: 276261027}
   sword: {fileID: 660912214}
+  swordTrail: {fileID: 1088514188454930044}
   nIndicator: {fileID: 1819519055}
   neIndicator: {fileID: 391194111}
   eIndicator: {fileID: 1237405714}
@@ -304,8 +306,8 @@ Transform:
   m_GameObject: {fileID: 242996025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -545,8 +547,8 @@ Transform:
   m_GameObject: {fileID: 391194111}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.38268322, w: 0.9238796}
-  m_LocalPosition: {x: 0.53033084, y: 0.53032917, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.70710677, y: 0.70710677, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -726,12 +728,12 @@ GameObject:
   m_Component:
   - component: {fileID: 660912215}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &660912215
 Transform:
   m_ObjectHideFlags: 0
@@ -833,8 +835,8 @@ Transform:
   m_GameObject: {fileID: 734220001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.92387927, w: 0.38268417}
-  m_LocalPosition: {x: 0.53032917, y: -0.53033084, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.70710677, y: -0.70710677, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -1043,8 +1045,8 @@ Transform:
   m_GameObject: {fileID: 838491176}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.9238796, w: 0.38268322}
-  m_LocalPosition: {x: -0.53033084, y: -0.53032917, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.70710677, y: -0.70710677, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -1075,8 +1077,8 @@ Transform:
   m_GameObject: {fileID: 840186942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -13895,8 +13897,8 @@ Transform:
   m_GameObject: {fileID: 1237405714}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -14017,8 +14019,8 @@ Transform:
   m_GameObject: {fileID: 1819519055}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -14167,8 +14169,8 @@ Transform:
   m_GameObject: {fileID: 2005812285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.38268417, w: 0.92387927}
-  m_LocalPosition: {x: -0.53032917, y: 0.53033084, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.70710677, y: 0.70710677, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180288459}
@@ -14261,6 +14263,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733728df9145e9a4a9c483cd3d3547e5, type: 3}
+--- !u!96 &1088514188454930044 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 8622207839557675726, guid: 733728df9145e9a4a9c483cd3d3547e5, type: 3}
+  m_PrefabInstance: {fileID: 1088514188454930043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5751271143698349457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2289675608266872232, guid: 733728df9145e9a4a9c483cd3d3547e5, type: 3}

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Spider : MonoBehaviour
 {
     [SerializeField] float minMoveDistance = 1f;
+    [SerializeField] SpriteRenderer spiderSprite;
 
     float moveSpeed = 2f; // Sey by Controller
     float moveDuration = 1f; // Sey by Controller
@@ -53,16 +54,14 @@ public class Spider : MonoBehaviour
         StartCoroutine(MoveRoutine());
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
-            SwordplayController.Instance.PlayerHit();
-            StopAllCoroutines();
-            Destroy(gameObject);
+            HitPlayer(collider.gameObject);
         }
 
-        if (collision.CompareTag("Sword"))
+        if (collider.CompareTag("Sword"))
         {
             Kill();
         }
@@ -71,17 +70,33 @@ public class Spider : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
-        {
-            SwordplayController.Instance.PlayerHit();
-            StopAllCoroutines();
-            Destroy(gameObject);
+        {         
+            HitPlayer(collision.collider.gameObject);
         }
+    }
+
+    void HitPlayer(GameObject player)
+    {        
+        SwordplayPlayer playerScript = player.GetComponent<SwordplayPlayer>();
+        playerScript.PlayDamagedEffects();
+        
+        StopAllCoroutines();
+        Destroy(gameObject);
+    }
+
+    IEnumerator PlayHitEffects()
+    {
+        spiderSprite.color = Color.red;
+        yield return new WaitForSeconds(0.05f);
+        spiderSprite.color = Color.white;
+        Destroy(gameObject);
     }
 
     void Kill()
     {
         SwordplayController.Instance.EnemyDefeated();
         StopAllCoroutines();
-        Destroy(gameObject);
+        movement.SetVelocity(Vector2.zero);
+        StartCoroutine(PlayHitEffects());
     }
 }

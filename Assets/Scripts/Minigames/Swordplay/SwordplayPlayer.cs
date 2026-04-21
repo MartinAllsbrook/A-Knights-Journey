@@ -6,9 +6,14 @@ class SwordplayPlayer : MinigamePlayer
 {
     public static SwordplayPlayer instance;
 
+    [Header("Misc References")]
+    [SerializeField] SpriteRenderer playerSprite;
+
     [Header("Sword References")]
     [SerializeField] GameObject sword;
-
+    [SerializeField] TrailRenderer swordTrail;
+    
+    [Header("Direction Indicator References")]
     [SerializeField] GameObject nIndicator;
     [SerializeField] GameObject neIndicator;
     [SerializeField] GameObject eIndicator;
@@ -53,6 +58,22 @@ class SwordplayPlayer : MinigamePlayer
     {
         InputManager.Swordplay_Attack -= OnAttack;
         InputManager.Swordplay_OnMove -= OnMoveInput;
+    }
+
+    public void PlayDamagedEffects()
+    {
+        Debug.Log("playing damaged effects");
+        StartCoroutine(DamagedEffects());
+    }
+
+    IEnumerator DamagedEffects()
+    {
+        playerSprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        playerSprite.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+
+        SwordplayController.Instance.PlayerHit(); // TODO: This should happen earlier and the game just just add a short delay to when it ends
     }
 
     void OnMoveInput(Vector2 input)
@@ -156,6 +177,8 @@ class SwordplayPlayer : MinigamePlayer
     {
         sword.SetActive(true);
         sword.transform.localRotation = Quaternion.Euler(0f, 0f, startAngle);
+
+        swordTrail.Clear();
 
         float elapsed = 0f;
         while (elapsed < attackDuration)

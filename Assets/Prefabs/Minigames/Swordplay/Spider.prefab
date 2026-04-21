@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spider
   minMoveDistance: 1
+  spiderSprite: {fileID: 6152072983813536185}
 --- !u!114 &2679566612783052545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +62,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05543ec781b4a304ea69c4c8664eb625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  ractivity: 10
+  reactivity: 25
+  lockYAxis: 0
+  lockXAxis: 0
+  dashMultiplier: 6
+  dashDuration: 0.15
 --- !u!50 &-1234405257094158679
 Rigidbody2D:
   serializedVersion: 5
